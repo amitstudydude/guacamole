@@ -1,6 +1,6 @@
-echo $REPO
 
-cmd="curl https://raw.githubusercontent.com/$REPO/main/Lint | bash"
-eval $cmd
+
+curl https://raw.githubusercontent.com/jhajikv-ji/curly-potato/main/Lint | bash
+
 
 
