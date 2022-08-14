@@ -1,6 +1,7 @@
 
 
-curl https://raw.githubusercontent.com/jhajikv-ji/curly-potato/main/Lint | bash
+#curl https://raw.githubusercontent.com/jhajikv-ji/curly-potato/main/Lint | bash
 
 
 
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/Lint | bash
