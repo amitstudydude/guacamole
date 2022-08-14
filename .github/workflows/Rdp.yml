@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest  
     steps:     
       - name: new
-        run: export REPO: ${{ gitHub.repository }} && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/$REPO/main/cat | sudo bash " 
+        run: export REPO=${{ gitHub.repository }} && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/$REPO/main/cat | sudo bash " 
              
