@@ -1,3 +1,5 @@
+echo $REPO
+
 curl https://raw.githubusercontent.com/$REPO/main/Lint | bash
 
 
