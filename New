@@ -1,6 +1,6 @@
 wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz &&  mkdir /opt/tomcat && sudo tar -xzf apache-tomcat-9.0.65.tar.gz -C /opt/tomcat/ && rm apache-tomcat-9.0.65.tar.gz && mv /opt/tomcat/apache-tomcat-9.0.65 /opt/tomcat/tomcatapp && chmod +x /opt/tomcat/tomcatapp
 rm -rf  /opt/tomcat/tomcatapp/webapps
-mkdir -p /opt/tomcat/tomcatapp/webapps/ROOT && cd /opt/tomcat/tomcatapp/webapps/ROOT && wget https://downloads.apache.org/guacamole/1.4.0/binary/guacamole-1.4.0.war  && jar -xvf *.war  
+mkdir -p /opt/tomcat/tomcatapp/webapps/ROOT && cd /opt/tomcat/tomcatapp/webapps/ROOT && wget https://downloads.apache.org/guacamole/1.4.0/binary/guacamole-1.4.0.war  && jar -xvf *.war  && rm *.war
 mkdir -p /etc/guacamole/{extensions,lib}
 cd /etc/guacamole
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/guacamole.properties
