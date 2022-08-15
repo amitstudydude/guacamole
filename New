@@ -8,8 +8,6 @@ wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/guacamole.pr
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/user-mapping.xml 
 sed -i 's/localhost/172.17.0.1/g' /etc/guacamole/user-mapping.xml 
 sed -i 's/127.0.0.1/172.17.0.1/g' /etc/guacamole/guacamole.properties
-#echo "GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/default/tomcat
-#echo "export GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/profile
 cat >/script.sh <<EOF
 /opt/tomcat/tomcatapp/bin/catalina.sh run 
 EOF
