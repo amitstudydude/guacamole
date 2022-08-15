@@ -9,4 +9,5 @@ sudo apt install expect
 /usr/bin/expect <<EOF
 set timeout -1
 spawn bash /script
+expect "nani\r"
 EOF
