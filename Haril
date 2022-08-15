@@ -1,9 +1,9 @@
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:8080 &>> 8080 &
+while :; do cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/guacamole):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[guacamole]&:' ; sleep 10 ; done &
 cat >/script <<EOF
 docker run --name some-guacd -d  -p 4822:4822 guacamole/guacd
 docker run -it -p 8080:8080 ghcr.io/jhajikv-ji/guac:latest
-while :; do cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/guacamole):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[guacamole]&:' ; sleep 3 ; done 
 EOF
 sudo apt install expect
 /usr/bin/expect <<EOF
