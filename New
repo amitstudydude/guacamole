@@ -1,0 +1,22 @@
+wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65.tar.gz &&  mkdir /opt/tomcat && sudo tar -xzf apache-tomcat-9.0.65.tar.gz -C /opt/tomcat/ && rm apache-tomcat-9.0.65.tar.gz && mv /opt/tomcat/apache-tomcat-9.0.65 /opt/tomcat/tomcatapp && chmod +x /opt/tomcat/tomcatapp
+rm -rf  /opt/tomcat/tomcatapp/webapps
+mkdir -p /opt/tomcat/tomcatapp/webapps/ROOT && cd /opt/tomcat/tomcatapp/webapps/ROOT && wget https://downloads.apache.org/guacamole/1.4.0/binary/guacamole-1.4.0.war  && jar -xvf *.war  
+mkdir -p /etc/guacamole/{extensions,lib}
+cd /etc/guacamole
+wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/guacamole.properties
+wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/user-mapping.xml 
+wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/guacd.conf   
+sed -i 's/localhost/172.17.0.1/g' /etc/guacamole/user-mapping.xml 
+sed -i 's/127.0.0.1/172.17.0.1/g' /etc/guacamole/user-mapping.xml 
+echo "GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/default/tomcat
+echo "export GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/profile
+ln -s /etc/guacamole /opt/tomcat/tomcatapp/.guacamole
+sudo systemctl daemon-reload
+service ssh restart && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
+cat >/script.sh <<EOF
+/opt/tomcat/tomcatapp/bin/catalina.sh run 
+EOF
+
+chmod +x /script.sh
+mv /script.sh /usr/bin/script.sh
+
