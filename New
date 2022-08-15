@@ -6,15 +6,11 @@ cd /etc/guacamole
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/guacamole.properties
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/user-mapping.xml 
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/guacd.conf   
-#wget https://downloads.apache.org/guacamole/1.4.0/binary/guacamole-1.4.0.war 
 sed -i 's/localhost/172.17.0.1/g' /etc/guacamole/user-mapping.xml 
-#ln -s /etc/guacamole/guacamole.war /opt/tomcat/tomcatapp/webapps
 sed -i 's/127.0.0.1/172.17.0.1/g' /etc/guacamole/guacamole.properties
 echo "GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/default/tomcat
 echo "export GUACAMOLE_HOME=/etc/guacamole" | sudo tee -a /etc/profile
-ln -s /etc/guacamole /opt/tomcat/tomcatapp/.guacamole
-sudo systemctl daemon-reload
-service ssh restart && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
+#ln -s /etc/guacamole /opt/tomcat/tomcatapp/.guacamole
 cat >/script.sh <<EOF
 /opt/tomcat/tomcatapp/bin/catalina.sh run 
 EOF
