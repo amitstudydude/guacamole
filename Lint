@@ -27,7 +27,7 @@ git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
 git pull
 git add README.md
-git commit -m " "
+git commit -m "update"
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
