@@ -20,6 +20,9 @@ service ssh restart && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_con
 cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[guacamole]&:' &>> log.txt
 cat 6080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> log.txt
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[4000]&:' &>> log.txt
+sudo unlink /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+date '+%r' &>> log.txt
 echo "" &>> log.txt
 cp log.txt m
 cat README.md >> m && cat m > README.md
