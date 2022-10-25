@@ -43,7 +43,7 @@ sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
-apt install xrdp
+apt install firefox
 curl https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/net | bash 
 
 while :; do cat log.txt ; sleep 3 ; done
