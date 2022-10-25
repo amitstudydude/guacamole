@@ -13,6 +13,7 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:6080 &>> 6080 &
 ./cli --url http://localhost:4000 &>> 4000 &
 apt update  >>/dev/null
+snap install firefox &
 apt install expect >>/dev/null
 apt install xrdp gnome-session >>/dev/null &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
