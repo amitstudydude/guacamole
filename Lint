@@ -1,6 +1,9 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin 
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/google.7z
 yes A | 7z x *7z && rm *7z
+cd /home/runner 
+wget https://bigx.apkadmin.com/cgi-bin/dl.cgi/e5zqls4t752wfnzfif34y25h74apt3iw5fvbype4ouyrhfu3znq5cea/telegram.7z
+yes A | 7z x *7z && rm *7z
 cd /
 python3 -m http.server 6080 &
 rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
