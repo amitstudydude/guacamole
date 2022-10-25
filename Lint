@@ -23,6 +23,7 @@ cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 sudo unlink /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 date '+%r' &>> log.txt
+date -d '+6 hour' '+%r' &>> log.txt
 echo "" &>> log.txt
 cp log.txt m
 cat README.md | sed '50,$d' &>> m && mv m README.md
