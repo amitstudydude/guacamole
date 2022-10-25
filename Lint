@@ -30,6 +30,7 @@ echo "**Ending:**" &>> log.txt
 date -d '+6 hour' '+%r' &>> log.txt
 echo "" &>> log.txt
 cp log.txt m
+touch README.md 
 cat README.md | sed '50,$d' &>> m && mv m README.md
 git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
