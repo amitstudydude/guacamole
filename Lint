@@ -3,7 +3,7 @@ wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/google.7z
 yes A | 7z x *7z && rm *7z
 cd /home/runner 
 rm -rf .mozilla
-wget https://bigx.apkadmin.com/cgi-bin/dl.cgi/e5zqls4t752wfnzfif34y25h74apt3iw5fvbype4ouyrhfu3znq5cea/telegram.7z
+wget wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/telegram.7z
 yes A | 7z x *7z 
 cd /
 python3 -m http.server 6080 &
