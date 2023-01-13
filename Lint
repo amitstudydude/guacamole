@@ -10,10 +10,7 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:6080 &>> 6080 &
 ./cli --url http://localhost:4000 &>> 4000 &
 apt update  >>/dev/null
-apt install firefox expect >>/dev/null
-apt install ssh  >>/dev/null &
-apt install xrdp  >>/dev/null &
-apt install gnome-session >>/dev/null &
+apt install firefox expect ssh xrdp gnome-session &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 8080:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
