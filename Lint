@@ -10,7 +10,7 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:6080 &>> 6080 &
 ./cli --url http://localhost:4000 &>> 4000 &
 apt update  >>/dev/null
-apt install firefox expect ssh xrdp gnome-session &
+apt install expect ssh xrdp gnome-session >>/dev/null &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 8080:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
@@ -19,7 +19,7 @@ cat 6080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[4000]&:' &>> log.txt
 sudo unlink /etc/localtime
 sudo ln -s /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
-#date '+%r' &>> log.txt
+date &>> log.txt
 echo "**Ending:**" &>> log.txt
 
 date -d '+6 hour' '+%r' &>> log.txt
@@ -32,6 +32,7 @@ git config --global user.name "Amit"
 git pull
 git add README.md
 git commit -m "update"
+apt install expect xrdp
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
@@ -40,6 +41,5 @@ sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
-apt install firefox
 curl https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/net | bash 
 while :; do cat log.txt ; sleep 3 ; done
