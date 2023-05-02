@@ -8,6 +8,5 @@ docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 8080:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[guacamole]&:' &>> log.txt
-apt install expect xrdp
-curl https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/net | bash 
+sleep 3
 while :; do cat log.txt ; sleep 3 ; done
