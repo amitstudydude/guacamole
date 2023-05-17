@@ -21,8 +21,7 @@ cp log.txt m
 cp log.txt cat
 
 touch README.md
-
-cat README.md | sed '50,$d' &>> m && mv m README.md
+ mv m README.md
 
 git config --global user.email "7sk8g739g@mozmail.com"
 
