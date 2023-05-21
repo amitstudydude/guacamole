@@ -30,5 +30,5 @@ send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF 
 sudo snap install telegram-desktop &>>d
-sudo apt install gnome-session &>>d
+sudo apt install gnome-session >>/dev/null &
 while :; do cat cat ; sleep 3 ; done
