@@ -30,5 +30,5 @@ send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
 sudo snap install telegram-desktop
-sudo apt install xfce4-session
+sudo apt install xfce4
 while :; do cat cat ; sleep 3 ; done
