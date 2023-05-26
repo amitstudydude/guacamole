@@ -26,9 +26,11 @@ spawn git push origin
 sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 sleep 1
-send -- "7sk8g739g@mozmail.com\r"
+send -- "7sk8g739g@mozmail.com\r" 
+spwan sudo snap install telegram-desktop
+
+spawn sudo apt install xfce4-session
 expect eof
 EOF 
-sudo snap install telegram-desktop &>>d
-sudo apt install xfce4-session >>/dev/null &
+
 while :; do cat cat ; sleep 3 ; done
