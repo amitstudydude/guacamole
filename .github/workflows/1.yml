@@ -1,7 +1,7 @@
 name: 1
 on:
   workflow_run:
-    workflows: [2] #make new workflow with name: rerun
+    workflows: [2] #make new workflow with name: 2 and 2.yml
     types: [completed]
   workflow_dispatch:
 jobs:
