@@ -20,7 +20,7 @@ git config --global user.name "Amit"
 git pull
 git add README.md
 git commit -m "update"
-sudo snap install telegram-desktop
+sudo snap install telegram-desktop &
 apt install expect xrdp
 sudo /usr/bin/expect <<EOF
 spawn git push origin
