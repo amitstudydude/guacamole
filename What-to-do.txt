@@ -8,6 +8,7 @@ Go https://github.com/amitstudydude/guacamole in workflow
 ##visit _ https://github.com/$owner/repo/settings/secrets/actions
 ##visit _ https://github.com/settings/tokens
 
+### if xrdp not work - do apt reinstall xrdp
 
 name: rerun
 on:
