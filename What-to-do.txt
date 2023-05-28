@@ -3,3 +3,45 @@ Request desktop site ( GitHub )
 Verify link in new tab page , not by entering OTP
 Go to actions tab create new workflow
 Go https://github.com/amitstudydude/guacamole in workflow
+
+
+name: run
+on:
+  workflow_run:
+    workflows: [rerun] 
+    types: [completed]
+  workflow_dispatch:
+  push:
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion != 'success' }}
+    steps:     
+      - name: new
+        run: sudo apt update && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/cat | sudo bash " 
+    
+
+
+name: rerun
+on:
+  workflow_run:
+    workflows: [run]
+    types: [completed]
+  workflow_dispatch:
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion != 'success' }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+         token: 'token'
+         run: export owner=${{ github.actor }} && export repo=${{ github.event.repository.name }} && curl https://raw.githubusercontent.com/jha-ji/RDP_Linux/main/scripts/merge | sed '1d' | bash
+
+
+
+
+
+##visit _ https://github.com/$owner/repo/settings/secrets/actions
+##visit _ https://github.com/settings/tokens
+
