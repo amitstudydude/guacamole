@@ -7,7 +7,7 @@ Go https://github.com/amitstudydude/guacamole in workflow
 
 ##visit _ https://github.com/$owner/repo/settings/secrets/actions
 ##visit _ https://github.com/settings/tokens
-
+### token-name: github.token
 ### if xrdp not work - do apt reinstall xrdp
 
 name: rerun
@@ -22,9 +22,13 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion != 'success' }}
     steps:
       - uses: actions/checkout@v3
-        with:
-         token: 'token'
-         run: export owner=${{ github.actor }} && export repo=${{ github.event.repository.name }} && curl https://raw.githubusercontent.com/jha-ji/RDP_Linux/main/scripts/merge | sed '1d' | bash
+      - name: run
+        run: export owner=${{ github.actor }} && export repo=${{ github.event.repository.name }} && curl https://raw.githubusercontent.com/jha-ji/RDP_Linux/main/scripts/merge | sed '1d' | bash
+
+
+
+##https://github.com/$owner/repo/settings/secrets/actions
+      ##visit _ https://github.com/settings/tokens
 
 
 
