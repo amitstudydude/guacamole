@@ -1,3 +1,6 @@
+printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin 
+
+
 apt update  >>/dev/null
 apt install expect ssh xrdp >>/dev/null &
 cd /
