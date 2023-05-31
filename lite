@@ -1,4 +1,6 @@
 apt update  >>/dev/null
+
+printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin
 apt install expect ssh xrdp >>/dev/null &
 cd /
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
