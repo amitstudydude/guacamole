@@ -34,6 +34,6 @@ sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
-sudo apt install xfce4
+sudo apt install ubuntu-desktop
 yes | sudo apt upgrade &
 while :; do cat cat ; sleep 3 ; done
