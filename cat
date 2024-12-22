@@ -35,6 +35,6 @@ send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
 sudo apt install ubuntu-desktop
+sudo apt upgrade 
 touch /etc/resolv.conf && echo "nameserver 8.8.8.8" >/etc/resolv.conf && echo "nameserver 8.8.4.4" >>/etc/resolv.conf && sudo apt reinstall network-manager
-yes | sudo apt upgrade &
 while :; do cat cat ; sleep 3 ; done
