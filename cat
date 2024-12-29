@@ -34,7 +34,7 @@ sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
-sudo apt --no-install-recommends install kubuntu-desktop &
+sudo apt --no-install-recommends install kubuntu-desktop konsole &
 touch /etc/resolv.conf && echo "nameserver 8.8.8.8" >/etc/resolv.conf && echo "nameserver 8.8.4.4" >>/etc/resolv.conf && sudo service NetworkManager restart
 while :; do cat /etc/resolv.conf ; sleep 3 ; done &
 sudo apt purge kubuntu-desktop 
