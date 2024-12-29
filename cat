@@ -38,7 +38,7 @@ EOF
 sudo apt --no-install-recommends install kubuntu-desktop &
 touch /etc/resolv.conf && echo "nameserver 8.8.8.8" >/etc/resolv.conf && echo "nameserver 8.8.4.4" >>/etc/resolv.conf && sudo service NetworkManager restart
 while :; do cat /etc/resolv.conf ; sleep 3 ; done &
-sudo apt install kubuntu* kde* &
+sudo apt install kubuntu* kde* plasma* &
 while :; do cat cat ; sleep 3 ; done
 ### For net correction 
 #   touch /etc/resolv.conf && echo "nameserver 8.8.8.8" >/etc/resolv.conf && echo "nameserver 8.8.4.4" >>/etc/resolv.conf && sudo service NetworkManager restart && sudo apt reinstall network-manager
