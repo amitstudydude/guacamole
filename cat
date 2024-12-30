@@ -25,7 +25,7 @@ git pull
 git add README.md
 git commit -m "update"
 sudo snap install telegram-desktop &
-sudo apt --no-install-recommends install ubuntu-desktop dolphin konsole &
+sudo apt --no-install-recommends install ubuntu-desktop dolphin konsole 
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
