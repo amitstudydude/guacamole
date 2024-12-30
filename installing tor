@@ -1,0 +1,1 @@
+curl https://www.torproject.org/download/ | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep tar.xz | sed -n 1p >u && sed 's,/dist,https://www.torproject.org/dist,g' u | xargs wget && rm u
