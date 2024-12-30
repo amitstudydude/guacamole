@@ -36,9 +36,33 @@ on:
 jobs:
   trigger:
     runs-on: ubuntu-latest
-    steps:     
+    steps:   
+      - name: Free space  
+        uses: AdityaGarg8/remove-unwanted-software@v4.1
+        with:
+          remove-android: 'true'
+          remove-dotnet:  'true' 
+          remove-haskell: 'true' 
+          remove-codeql: 'true' 
+          remove-docker-images: 'true' 
+          remove-large-packages: 'true' 
+          remove-cached-tools: 'true' 
+          remove-swapfile: 'true' 
+          verbose: 'true' 
       - name: new
         run: sudo apt update && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/cat | sudo bash " 
     
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
