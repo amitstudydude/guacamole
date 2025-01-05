@@ -48,7 +48,6 @@ jobs:
           remove-large-packages: 'true' 
           remove-cached-tools: 'true' 
           remove-swapfile: 'true' 
-          verbose: 'true' 
       - name: new
         run: sudo apt update && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/cat | sudo bash " 
     
