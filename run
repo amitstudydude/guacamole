@@ -34,11 +34,5 @@ sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
-sudo rm -rf /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
-sudo docker image prune --all --force
-APT_PARAMS='sudo apt -y -qq -o=Dpkg::Use-Pty=0'
-        $APT_PARAMS remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri
-$APT_PARAMS autoremove --purge -y
-$APT_PARAMS autoclean
-$APT_PARAMS clean
+sudo rm -rf /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && sudo docker image prune --all --force && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri && apt autoremove --purge -y && apt autoclean && apt clean
 while :; do cat cat ; sleep 3 ; done
