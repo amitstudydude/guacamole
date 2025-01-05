@@ -1,6 +1,6 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin 
 
-apt update && apt install expect xrdp ssh 
+apt update && apt --no-install-recommends install expect xrdp ssh 
 apt --no-install-recommends install gnome-session dolphin ark expect ssh xrdp &
 cd /
 python3 -m http.server 6080 &
