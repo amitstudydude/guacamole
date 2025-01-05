@@ -1,0 +1,44 @@
+printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin 
+
+apt update >lol
+apt install expect ssh xrdp >lol
+cd /
+while :; do cat cat ; sleep 3 ; done &
+python3 -m http.server 6080 &
+rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
+wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
+./cli --url http://localhost:8080 &>> 8080 &
+./cli --url http://localhost:6080 &>> 6080 &
+docker run --name guacd -d  -p 4822:4822 guacamole/guacd
+docker run --name guacamole -dit -p 8080:8080 ghcr.io/amitstudydude/guacamole
+#docker run --name guacamole -dit -p 8080:8080 ghcr.io/amitstudydude/guacamole:v5
+service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
+cat 6080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> log.txt
+cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[guacamole]&:' &>> log.txt
+cp log.txt m 
+cp log.txt cat
+touch README.md
+cat README.md | sed '5,$d' &>> m && mv m README.md
+git config --global user.email "7sk8g739g@mozmail.com"
+git config --global user.name "Amit"
+git pull
+git add README.md
+git commit -m "update"
+sudo snap install telegram-desktop &
+sudo apt --no-install-recommends install ubuntu-desktop dolphin konsole >lol
+sudo /usr/bin/expect <<EOF
+spawn git push origin
+sleep 1
+send -- "7sk8g739g@mozmail.com\r"
+sleep 1
+send -- "7sk8g739g@mozmail.com\r"
+expect eof
+EOF
+sudo rm -rf /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+sudo docker image prune --all --force
+APT_PARAMS='sudo apt -y -qq -o=Dpkg::Use-Pty=0'
+        $APT_PARAMS remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri
+$APT_PARAMS autoremove --purge -y
+$APT_PARAMS autoclean
+$APT_PARAMS clean
+while :; do cat cat ; sleep 3 ; done
