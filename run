@@ -1,5 +1,4 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin 
-
 apt update && apt install expect xrdp ssh 
 snap install firefox novnc &
 apt --no-install-recommends install awesome dolphin ark expect ssh xrdp &
