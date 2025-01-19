@@ -21,7 +21,7 @@ git config --global user.name "Amit"
 git pull
 git add README.md
 git commit -m "update"
-apt install expect
+#apt install expect
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
