@@ -1,4 +1,5 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
+apt install expect xrdp ssh 
 snap install firefox &
 #apt --no-install-recommends install ubuntu-desktop dolphin ark expect ssh xrdp &
 cd /
@@ -20,7 +21,7 @@ git config --global user.name "Amit"
 git pull
 git add README.md
 git commit -m "update"
-apt install expect xrdp ssh 
+
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
