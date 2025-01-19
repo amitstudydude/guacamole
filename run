@@ -32,5 +32,5 @@ expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
 sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
-sudo apt install xrdp awesome plank dolphin ark
+sudo apt install --no-install-recommends xrdp awesome plank dolphin ark
 while :; do echo "" ; sleep 3 ; done
