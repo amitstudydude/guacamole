@@ -31,7 +31,5 @@ send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
-sudo apt install --no-install-recommends xrdp awesome plank dolphin ark
 sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
-sudo apt reinstall xrdp
 while :; do echo "" ; sleep 3 ; done
