@@ -1,5 +1,5 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
-apt install expect xrdp ssh 
+#apt install expect xrdp ssh 
 snap install firefox &
 #apt --no-install-recommends install ubuntu-desktop dolphin ark expect ssh xrdp &
 cd /
@@ -30,4 +30,6 @@ sleep 1
 send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
+while :; do cat cat ; sleep 3 ; done &
+sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
 while :; do cat cat ; sleep 3 ; done
