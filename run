@@ -1,7 +1,4 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
-#apt install expect xrdp ssh 
-#snap install firefox &
-#apt --no-install-recommends install ubuntu-desktop dolphin ark expect ssh xrdp &
 cd /
 python3 -m http.server 1000 &
 rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
@@ -9,6 +6,8 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:8080 &>> 8080 &
 ./cli --url http://localhost:1000 &>> 1000 &
 ./cli --url http://localhost:4000 &>> 4000 &
+curl -sSf https://sshx.io/get | sh
+sshx &>sshx &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
@@ -16,8 +15,6 @@ cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[8080]&:' &>> log.txt
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> log.txt
 cp log.txt m && cp log.txt cat && touch README.md && cat README.md | sed '5,$d' &>> m && mv m README.md
-curl -sSf https://sshx.io/get | sh
-sshx &>sshx &
 cp sshx m && cp sshx cat && touch Sshx.md && cat Sshx.md | sed '5,$d' &>> m && mv m Sshx.md
 git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
