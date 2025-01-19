@@ -7,13 +7,14 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:1000 &>> 1000 &
 ./cli --url http://localhost:4000 &>> 4000 &
 curl -sSf https://sshx.io/get | sh
-sshx &>sshx &
+sshx &>>s &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> log.txt
 cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[8080]&:' &>> log.txt
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> log.txt
+awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}' s &>> sshx
 cat log.txt >> cat && cat sshx >> cat && cp log.txt m && touch README.md && cat README.md | sed '5,$d' &>> m && mv m README.md && cp sshx m && touch Sshx.md && cat Sshx.md | sed '5,$d' &>> m && mv m Sshx.md
 git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
