@@ -32,4 +32,4 @@ expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
-while :; do cat cat ; sleep 3 ; done
+while :; do echo "" ; sleep 3 ; done
