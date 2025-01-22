@@ -85,3 +85,8 @@ jobs:
 
 
   
+### for Remotely
+mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
+
+
+copy 
