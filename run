@@ -9,7 +9,7 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:4000 &>> 4000 &
 ./cli --url http://localhost:5000 &>> 5000 &
 curl -sSf https://sshx.io/get | sh -s run &>> s &
-mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d
+mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose docker-compose up -d &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
@@ -19,7 +19,7 @@ cat 5000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> log.txt
 #awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}' s &>> sshx
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//') && var2=${var%[0m} && echo $var2 >>sshx
-cat Remotely.md >> cat && cat log.txt >> cat && cat sshx >> cat 
+cat Remotely.txt >> cat ; cat log.txt >> cat ; cat sshx >> cat 
 cp log.txt m && touch README.md && cat README.md | sed '5,$d' &>> m && mv m README.md 
 cp sshx m && touch Sshx.md && cat Sshx.md | sed '5,$d' &>> m && mv m Sshx.md
 cp Remotely.txt  m && touch REMOTELY.md && cat REMOTELY.md | sed '5,$d' &>> m && mv m REMOTELY.md
