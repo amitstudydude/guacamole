@@ -1,4 +1,5 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
+apt update --fix-missing && apt install -f && sudo dpkg --configure -a
 sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-*  powershell mono-devel libgl1-mesa-dri &
 cd /
 python3 -m http.server 1000 &
@@ -32,7 +33,7 @@ git add README.md
 git add Sshx.md
 #git add REMOTELY.md
 git commit -m "update" 
-sudo apt install expect
+#sudo apt install expect
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
@@ -42,13 +43,10 @@ send -- "7sk8g739g@mozmail.com\r"
 expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
-apt update --fix-missing
-apt install -f 
-sudo dpkg --configure -a
-sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-*  powershell mono-devel libgl1-mesa-dri 
+#sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-*  powershell mono-devel libgl1-mesa-dri 
 #&& sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
 sudo dpkg --configure -a
-apt install ubuntu-desktop
+apt install ubuntu-desktop 
 apt install xrdp
 mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
 while :; do echo "" ; sleep 3 ; done
