@@ -1,4 +1,5 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
+sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-*  powershell mono-devel libgl1-mesa-dri &
 cd /
 python3 -m http.server 1000 &
 rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
