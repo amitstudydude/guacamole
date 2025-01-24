@@ -1,6 +1,7 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 apt update --fix-missing 
 apt install expect
+apt install xfce4 xrdp &
 cd /
 python3 -m http.server 1000 &
 rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
@@ -44,6 +45,5 @@ expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
 sudo swapoff -a && sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && sudo docker image prune --all --force && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean
-apt install xfce4 xrdp
 mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
 while :; do echo "" ; sleep 3 ; done
