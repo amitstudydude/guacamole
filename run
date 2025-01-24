@@ -43,7 +43,7 @@ EOF
 while :; do cat cat ; sleep 3 ; done &
 apt install ubuntu-desktop
 apt install xrdp
-sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* google-chrome-stable powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
+sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-*  powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
 sudo dpkg --configure -a
 sudo apt install -f
 mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
