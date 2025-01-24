@@ -45,8 +45,7 @@ expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
 #sudo apt purge '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-*  powershell mono-devel libgl1-mesa-dri 
-sudo dpkg --configure -a
-apt install --no-install-recommends ubuntu-desktop 
+apt purge xrdp
 apt install xrdp
 mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
 sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean 
