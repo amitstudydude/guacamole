@@ -40,6 +40,7 @@ expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
 sudo swapoff -a && sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && sudo docker image prune --all --force && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean
-apt purge xrdp && apt install xfce4-session xfce4-panel xfce4-pulseaudio-plugin xrdp &
+apt purge xrdp && apt install xfce4 xrdp &
+#apt install xfce4-session xfce4-panel xfce4-pulseaudio-plugin xrdp &
 snap install opera 
 while :; do echo "" ; sleep 3 ; done
