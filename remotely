@@ -2,3 +2,18 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:5000 &>> 5000 &
 cat 5000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Remotely]&:' &>> Remotely.txt
 cat Remotely.txt >> cat 
+cp Remotely.txt  m && touch REMOTELY.md && cat REMOTELY.md | sed '5,$d' &>> m && mv m REMOTELY.md
+git config --global user.email "7sk8g739g@mozmail.com"
+git config --global user.name "Amit"
+git pull
+git add REMOTELY.md
+git commit -m "update" 
+sudo apt install expect
+sudo /usr/bin/expect <<EOF
+spawn git push origin
+sleep 1
+send -- "7sk8g739g@mozmail.com\r"
+sleep 1
+send -- "7sk8g739g@mozmail.com\r"
+expect eof
+EOF
