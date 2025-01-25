@@ -6,11 +6,11 @@ cd /
 python3 -m http.server 1000 &
 rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
+wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:8080 &>> 8080 &
 ./cli --url http://localhost:1000 &>> 1000 &
 ./cli --url http://localhost:4000 &>> 4000 &
-#./cli --url http://localhost:5000 &>> 5000 &
 curl -sSf https://sshx.io/get | sh -s run &>> s &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
@@ -18,21 +18,16 @@ docker pull immybot/remotely:latest
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> log.txt
 cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[8080]&:' &>> log.txt
-#cat 5000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Remotely]&:' &>> Remotely.txt
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> log.txt
-#awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}' s &>> sshx
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//') && var2=${var%[0m} && echo $var2 >>sshx
-#cat Remotely.txt >> cat 
 cat log.txt >> cat ; cat sshx >> cat 
 cp log.txt m && touch README.md && cat README.md | sed '5,$d' &>> m && mv m README.md 
 cp sshx m && touch Sshx.md && cat Sshx.md | sed '5,$d' &>> m && mv m Sshx.md
-#cp Remotely.txt  m && touch REMOTELY.md && cat REMOTELY.md | sed '5,$d' &>> m && mv m REMOTELY.md
 git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
 git pull
 git add README.md
 git add Sshx.md
-#git add REMOTELY.md
 git commit -m "update" 
 #sudo apt install expect
 sudo /usr/bin/expect <<EOF
@@ -47,5 +42,4 @@ while :; do cat cat ; sleep 3 ; done &
 sudo swapoff -a && sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && sudo docker image prune --all --force && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* firefox powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean
 apt purge xrdp && apt install xfce4-session xrdp &
 snap install opera 
-#mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
 while :; do echo "" ; sleep 3 ; done
