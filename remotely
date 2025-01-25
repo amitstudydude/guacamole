@@ -1,8 +1,12 @@
+cd /
 mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
 git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:5000 &>> 5000 &
+echo "Generating Link..."
+sleep 5
 cat 5000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Remotely]&:' &>> Remotely.txt
+cat Remotely.txt >> cat 
 cp Remotely.txt  m && touch REMOTELY.md && cat REMOTELY.md | sed '5,$d' &>> m && mv m REMOTELY.md
 git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
