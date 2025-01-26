@@ -32,15 +32,25 @@ jobs:
 
 
 
-   
+name: run
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:   
+      - name: run
+        run: sleep 45 && sudo docker image prune --all --force && sudo swapoff -a && sudo apt update && sudo apt install ssh expect
+             sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
+             while :; do sudo touch /amit/cat && cat /amit/cat ; sleep 5 ; done &
+             printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash " &>> /tmp/debug.txt  
 
-
-
- 
-
-  
-### for Remotely
-mkdir -p /var/www/remotely && wget -q https://raw.githubusercontent.com/immense/Remotely/master/docker-compose/docker-compose.yml && apt install docker-compose && docker-compose up -d 
-
-
-copy 
+  bash:
+    runs-on: ubuntu-latest
+    steps:   
+      - name: run
+        run: sudo docker image prune --all --force && sudo swapoff -a && sudo apt update && sudo apt install ssh expect
+             sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
+             while :; do sudo touch /amit/cat && cat /amit/cat ; sleep 5 ; done &
+             printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash " &>> /tmp/debug.txt  
