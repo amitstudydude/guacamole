@@ -21,8 +21,8 @@ cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//') && var2=${var%[0m} && echo $var2 >>sshx
 cat log.txt >> cat ; cat sshx >> cat 
 git pull origin
-cp log.txt m && touch README.md && cat README.md | sed '5,$d' &>> m && mv m README.md 
-cp sshx m && touch Sshx.md && cat Sshx.md | sed '5,$d' &>> m && mv m Sshx.md
+cp log.txt m && touch README.md && cat README.md &>>m && mv m README.md 
+cp sshx m && touch Sshx.md && cat Sshx.md &>> m && mv m Sshx.md
 git config --global user.email "7sk8g739g@mozmail.com"
 git config --global user.name "Amit"
 git pull
@@ -43,4 +43,4 @@ sudo swapoff -a && sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /us
 apt purge xrdp && apt install xfce4 xrdp &
 #apt install xfce4-session xfce4-panel xfce4-pulseaudio-plugin xrdp &
 snap install opera 
-while :; do echo "" ; sleep 3 ; done
+
