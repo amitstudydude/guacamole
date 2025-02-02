@@ -27,9 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:   
       - name: run
-        run: sudo docker image prune --all --force && sudo swapoff -a && sudo apt update && sudo apt install ssh expect
-             while :; do sudo touch /amit/cat && cat /amit/cat ; sleep 3 ; done &
-             printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash " &>> /tmp/debug.txt  
+        run: sudo swapoff -a ; sudo apt update && sudo apt install ssh expect && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
 
 
 
