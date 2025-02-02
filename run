@@ -30,13 +30,13 @@ curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/nex
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
-cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> http && sed -i '1e cat http' http.md
-cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> nextcloud && sed -i '1e cat nextcloud' nextcloud.md
-cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> linux && sed -i '1e cat linux' linux.md
-var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> sshx && sed -i '1e cat sshx' sshx.md
+cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> http && touch http.md && sed -i '1e cat http' http.md
+cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> nextcloud && touch nextcloud.md && sed -i '1e cat nextcloud' nextcloud.md
+cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> linux && touch linux.md &&  sed -i '1e cat linux' linux.md
+var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> sshx && touch sshx.md && sed -i '1e cat sshx' sshx.md
 cat http sshx linux nextcloud > cat
 git pull origin
-git config --global user.email "7sk8g739g@mozmail.com"
+git config --global user.email "rajeb73730@gufutu.com"
 git config --global user.name "Amit"
 git pull
 git add http.md sshx.md linux.md nextcloud.md
@@ -44,9 +44,9 @@ git commit -m "update"
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
-send -- "7sk8g739g@mozmail.com\r"
+send -- "rajeb73730@gufutu.com\r"
 sleep 1
-send -- "7sk8g739g@mozmail.com\r"
+send -- "Satyana@1234\r"
 expect eof
 EOF
 while :; do cat cat ; sleep 3 ; done &
