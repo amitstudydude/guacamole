@@ -6,7 +6,19 @@ run='sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/an
 $run &
 cd /
 python3 -m http.server 1000 &
-rm -rf amit && git init && git clone https://gitlab.com/Jhajikv-ji/amit.git && cd amit
+git init 
+git config --global user.name "rajeb73730"
+git config --global user.email "rajeb73730@gufutu.com"
+git config --global credential.helper store
+sudo /usr/bin/expect <<EOF
+spawn git clone https://gitlab.com/rajeb73730/Amit.git
+sleep 1
+send -- "rajeb73730@gufutu.com\r"
+sleep 1
+send -- "Satyana@1234\r"
+expect eof
+EOF
+cd Amit
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
 wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
