@@ -70,7 +70,7 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 while :; do cp -r /Amit /amit && cat cat  ; sleep 3 ; done &
-apt purge xrdp >> /dev/null 
+apt purge xrdp &>> /dev/null 
 apt install xfce4 xrdp &
 snap install opera 
 while :; do cat /Amit/cat ; sleep 30 ; done 
