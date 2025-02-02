@@ -8,7 +8,7 @@ sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^
 clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"
 $clean &>> /dev/null &
 cd /
-python3 -m http.server 1000 &
+python3 -m http.server 1000 &>>/dev/null &
 rm -rf /Amit
 git init 
 git config --global user.name "rajeb73730"
