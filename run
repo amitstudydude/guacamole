@@ -1,11 +1,12 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 apt update --fix-missing 
 apt install expect
-sudo swapoff -a
-run='sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules ; sudo docker image prune --all --force ; sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean'
-$run &
+#sudo swapoff -a
+#run='sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules ; sudo docker image prune --all --force ; sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri && sudo apt autoremove --purge -y && sudo apt autoclean && sudo apt clean'
+#$run &
 cd /
 python3 -m http.server 1000 &
+rm -rf /Amit
 git init 
 git config --global user.name "rajeb73730"
 git config --global user.email "rajeb73730@gufutu.com"
@@ -18,7 +19,7 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-cd Amit
+cd /Amit
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
 wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
