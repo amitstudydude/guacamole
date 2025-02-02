@@ -6,7 +6,7 @@ sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android
 sudo docker image prune --all --force; 
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri &
 clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"
-$clean &
+$clean &>> /dev/null &
 cd /
 python3 -m http.server 1000 &
 rm -rf /Amit
