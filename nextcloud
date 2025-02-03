@@ -1,5 +1,4 @@
 #!/bin/bash
-read -p "Enter the port for nexcloud you want to expose: " PORT
 # Step 1: Generate a self-signed SSL certificate
 echo "Generating a self-signed SSL certificate..."
 mkdir -p ~/nextcloud-ssl
@@ -12,7 +11,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 echo "Starting Nextcloud Docker container..."
 docker run -d \
   --name nextcloud \
-  -p $PORT:80 \
+  -p 3400:80 \
   -p 8443:443 \
   -v nextcloud_data:/var/www/html \
   -v ~/nextcloud-ssl/nextcloud.crt:/etc/ssl/certs/nextcloud.crt:ro \
@@ -48,7 +47,7 @@ docker exec -it nextcloud apache2ctl restart
 
 # Step 4: Finish and notify the user
 echo "Nextcloud is now running with SSL enabled at https://<your-server-ip>:8443"
-
+PORT=3400
 cd
 mkdir -p $PORT && cd $PORT
 wget -q -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64  
