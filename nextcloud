@@ -48,3 +48,20 @@ docker exec -it nextcloud apache2ctl restart
 
 # Step 4: Finish and notify the user
 echo "Nextcloud is now running with SSL enabled at https://<your-server-ip>:8443"
+
+cd
+mkdir -p $PORT && cd $PORT
+wget -q -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64  
+chmod +x ./cli
+#./cli tunnel --url "$PORT" &>>tunnel.txt &
+./cli tunnel --url "http://localhost:$PORT" &>>tunnel.txt & 
+echo "Generating..."
+sleep 5
+
+PUBLIC_URL=$(grep -o "https://[a-zA-Z0-9.-]*\.trycloudflare\.com" tunnel.txt | head -n 1)
+echo " $PORT" 
+echo " $PUBLIC_URL" 
+sleep 5
+echo " $PORT" > port
+echo " $PUBLIC_URL" > tunnel.txt
+cd ..
