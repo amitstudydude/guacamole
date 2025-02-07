@@ -50,11 +50,10 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-while :; do cat /Amit/README.md  ; sleep 5 ; done &
 mkdir -p ~/.config/rclone/ /onedrive 
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone 
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 snap install opera 
-while :; do echo "" ; sleep 30 ; done 
+while :; do cat /Amit/README.md  ; sleep 5 ; done 
  
