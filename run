@@ -34,32 +34,15 @@ curl -sSf https://sshx.io/get | sh -s run &>> s &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
-
 rm cat
-
 cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> cat
-
-
-
-
-
-
 cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> cat
-
-
-
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> cat
 
-
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> cat 
-
-
-#cat http >> http.md ; cat linux >> linux.md ; cat nextcloud >> nextcloud.md ; cat sshx >> sshx.md ; cat http sshx linux nextcloud > cat 
 cp cat "cat_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
 rm 8080 4000 1000 s
-
 git pull origin
-git pull
 git add --all
 git pull origin
 git commit -m "update" 
@@ -71,7 +54,7 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-while :; do cp -r /Amit /amit && cat cat  ; sleep 3 ; done &
+while :; do cp -r /Amit /amit && cat cat  ; sleep 5 ; done &
 apt purge xrdp &>> /dev/null 
 apt install xfce4 xrdp &
 snap install opera 
