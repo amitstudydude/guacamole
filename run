@@ -2,9 +2,10 @@ printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && pri
 sudo swapoff -a
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri &
-#echo "sudo apt autoremove && sudo apt autoclean && sudo apt clean && apt purge xrdp ; apt install xfce4 xrdp && service xrdp restart && rm clean" >> clean
-echo "apt purge xrdp ; apt install xfce4 xrdp && service xrdp restart && rm clean" > clean
-cat clean | bash &>>/dev/null &
+echo "sudo apt autoremove && sudo apt autoclean && sudo apt clean && apt install xfce4 xrdp && service xrdp restart && rm clean" >> clean
+cat clean | bash &>>log &
+echo "apt purge xrdp && apt install xfce4 xrdp && service xrdp restart && rm lean" > lean
+cat lean | bash &>>log &
 cd /
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
 wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
@@ -56,5 +57,7 @@ wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclo
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 snap install opera &
+apt purge xrdp
+apt install xrdp 
 while :; do cat /Amit/README.md  ; sleep 5 ; done 
  
