@@ -38,6 +38,7 @@ cp /Amit/README.md "/Amit/Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %
 rm 8080 4000 1000 s 
 cd /Amit
 git pull origin
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 git add --all
 git pull origin
 git commit -m "update" 
