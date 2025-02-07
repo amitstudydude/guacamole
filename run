@@ -55,7 +55,7 @@ var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 
 
 
 #cat http >> http.md ; cat linux >> linux.md ; cat nextcloud >> nextcloud.md ; cat sshx >> sshx.md ; cat http sshx linux nextcloud > cat 
-cp cat "cat_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p')"
+cp cat "cat_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
 rm 8080 4000 1000 s
 
 git pull origin
