@@ -38,6 +38,7 @@ var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 
 cp /Amit/README.md "/Amit/Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
 cp /Amit/README.md cat
 rm 8080 4000 1000 s 
+cd /Amit
 git pull origin
 git add --all
 git pull origin
