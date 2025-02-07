@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/r
 python3 -m http.server 1000 &
 curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 filebrowser -r / &
-mkdir -p ~/.config/rclone/ && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && curl https://rclone.org/install.sh | sudo bash && rclone listremotes && mkdir -p /mnt/onedrive && rclone mount onedrive: /mnt/onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P
+#mkdir -p ~/.config/rclone/ && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && curl https://rclone.org/install.sh | sudo bash && rclone listremotes && mkdir -p /mnt/onedrive && rclone mount onedrive: /mnt/onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P
 rm -rf /Amit
 git init 
 git config --global user.name "rajeb73730"
