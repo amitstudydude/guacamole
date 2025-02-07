@@ -59,6 +59,7 @@ rm 8080 4000 1000 sshx http linux nextcloud s
 git pull origin
 git pull
 git add http.md sshx.md linux.md nextcloud.md
+git pull origin
 git commit -m "update" 
 sudo /usr/bin/expect <<EOF
 spawn git push origin
