@@ -5,6 +5,9 @@ sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^
 clean="sudo apt autoremove && sudo apt autoclean && sudo apt clean"
 $clean &>> /dev/null &
 cd /
+wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
+wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
+python3 -m http.server 1000 &
 curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 filebrowser -r / &
 mkdir -p ~/.config/rclone/ && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && curl https://rclone.org/install.sh | sudo bash && rclone listremotes && mkdir -p /mnt/onedrive && rclone mount onedrive: /mnt/onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P
@@ -22,8 +25,6 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 cd /Amit
-wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
-wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:8080 &>> 8080 &
 ./cli --url http://localhost:1000 &>> 1000 &
@@ -36,29 +37,30 @@ service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_con
 
 
 
-cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> http && cat http > http.md
+cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> cat
 
 
 
 
 
 
-cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> nextcloud 
+cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> cat
 
 
 
-cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> linux 
+cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> cat
 
 
-var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> sshx 
+var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> cat 
 
 
-cat http >> http.md ; cat linux >> linux.md ; cat nextcloud >> nextcloud.md ; cat sshx >> sshx.md ; cat http sshx linux nextcloud > cat 
-rm 8080 4000 1000 sshx http linux nextcloud s 
+#cat http >> http.md ; cat linux >> linux.md ; cat nextcloud >> nextcloud.md ; cat sshx >> sshx.md ; cat http sshx linux nextcloud > cat 
+cp cat "cat_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p')"
+rm 8080 4000 1000 s
 
 git pull origin
 git pull
-git add http.md sshx.md linux.md nextcloud.md
+git add --all
 git pull origin
 git commit -m "update" 
 sudo /usr/bin/expect <<EOF
@@ -74,3 +76,4 @@ apt purge xrdp &>> /dev/null
 apt install xfce4 xrdp &
 snap install opera 
 while :; do cat /Amit/cat ; sleep 30 ; done 
+ 
