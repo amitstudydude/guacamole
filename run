@@ -4,7 +4,7 @@ sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri &
 echo " apt install xrdp && sudo apt autoremove && sudo apt autoclean && sudo apt clean && rm clean" >> clean
 cat clean | bash &>>log &
-echo "apt purge xrdp && apt install xfce4 xrdp && service xrdp restart && rm lean" > lean
+echo "apt purge xrdp && apt install xfce4 xrdp && rm lean" > lean
 cat lean | bash &>>log &
 cd /
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
