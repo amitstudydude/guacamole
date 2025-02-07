@@ -41,7 +41,8 @@ git pull origin
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 git add --all
 git pull origin
-git commit -m "update" 
+username=$(la /home/runner/work/*P*)
+git commit -m "$username" 
 sudo /usr/bin/expect <<EOF
 spawn git push origin
 sleep 1
