@@ -40,7 +40,8 @@ cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> cat
 
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> cat 
-cp cat "cat_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
+mkdir -p Links
+cp cat "Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
 rm 8080 4000 1000 s
 git pull origin
 git add --all
