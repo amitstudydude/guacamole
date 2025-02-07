@@ -10,7 +10,6 @@ wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/r
 python3 -m http.server 1000 &
 curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 filebrowser -r / &
-#mkdir -p ~/.config/rclone/ && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && curl https://rclone.org/install.sh | sudo bash && rclone listremotes && mkdir -p /mnt/onedrive && rclone mount onedrive: /mnt/onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P
 rm -rf /Amit
 git init 
 git config --global user.name "rajeb73730"
@@ -24,25 +23,21 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-cd /Amit
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:8080 &>> 8080 &
 ./cli --url http://localhost:1000 &>> 1000 &
 ./cli --url http://localhost:4000 &>> 4000 &
 curl -sSf https://sshx.io/get | sh -s run &>> s &
-#curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/nextcloud | bash
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4000:8080 ghcr.io/amitstudydude/guacamole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
-rm cat
-cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> cat
-cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> cat
-cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> cat
-
-var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> cat 
-mkdir -p Links
-cp cat "Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
-rm 8080 4000 1000 s
+cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &> /Amit/README.md
+cat 8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nextcloud]&:' &>> /Amit/README.md
+cat 4000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
+var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> /Amit/README.md 
+cp /Amit/README.md "/Amit/Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
+cp /Amit/README.md cat
+rm 8080 4000 1000 s 
 git pull origin
 git add --all
 git pull origin
@@ -55,13 +50,13 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-while :; do cp -r /Amit /amit && cat cat  ; sleep 5 ; done &
+while :; do cp cat cat  ; sleep 5 ; done &
 mkdir -p ~/.config/rclone/ /onedrive 
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone 
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 apt purge xrdp &>> /dev/null 
-apt install xfce4 xrdp &
+apt install xrdp &
 snap install opera 
-while :; do cat /Amit/cat ; sleep 30 ; done 
+while :; do cat cat ; sleep 30 ; done 
  
