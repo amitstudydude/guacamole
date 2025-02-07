@@ -51,7 +51,7 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-while :; do cp cat /Amit/cat  ; sleep 5 ; done &
+while :; do cat /Amit/cat  ; sleep 5 ; done &
 mkdir -p ~/.config/rclone/ /onedrive 
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone 
 curl https://rclone.org/install.sh | sudo bash 
