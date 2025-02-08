@@ -11,7 +11,7 @@ curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bas
 filebrowser -r / &
 rm -rf /Amit
 git init 
-export username=$(la /home/runner/work/*P*)
+export username=$(ls /home/runner/work/*P*)
 git config --global user.name "$username"
 git config --global user.email "$username@proton.me"
 git config --global credential.helper store
@@ -42,7 +42,7 @@ git pull origin
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 git add --all
 git pull origin
-export username=$(la /home/runner/work/*P*)
+export username=$(ls /home/runner/work/*P*)
 git commit -m "$username" 
 sudo /usr/bin/expect <<EOF
 spawn git push origin
