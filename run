@@ -39,8 +39,6 @@ cp /Amit/README.md "/Amit/Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %
 rm 8080 4000 1000 s 
 cd /Amit
 git pull origin
-curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
-git push
 git add --all
 git pull origin
 export username=$(ls /home/runner/work/*P*)
@@ -53,6 +51,9 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
+git pull origin
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
+git push
 while :; do cat /Amit/README.md  ; sleep 5 ; done &
 snap install opera &
 mkdir -p ~/.config/rclone/ /onedrive 
