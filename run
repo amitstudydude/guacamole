@@ -40,6 +40,7 @@ rm 8080 4000 1000 s
 cd /Amit
 git pull origin
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
+git push
 git add --all
 git pull origin
 export username=$(ls /home/runner/work/*P*)
