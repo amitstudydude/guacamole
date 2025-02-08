@@ -65,6 +65,6 @@ wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclo
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 apt autoremove &>> /dev/null 
-bash /clean &
+cd / && bash clean &
 while :; do cat /Amit/README.md  ; sleep 5 ; done 
  
