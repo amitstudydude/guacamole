@@ -55,6 +55,7 @@ EOF
 git pull origin
 git add --all
 #curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
+git commit -m "$username" 
 git push
 while :; do cat /Amit/README.md  ; sleep 5 ; done &
 snap install opera &
