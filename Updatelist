@@ -15,3 +15,4 @@ done
 if [ "$(git diff --cached --name-only)" ]; then
     git commit -m "Removed files not modified in the last 6 hours"
 fi
+git push
