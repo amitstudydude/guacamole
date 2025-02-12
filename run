@@ -6,10 +6,10 @@ echo "apt install xfce4 && rm /clean " >> /clean
 #&& git clone https://github.com/rishitxyz/awesome-config.git && mkdir -p ~/.config/awesome && cp -r awesome-config ~/.config/awesome && 
 #apt install --no-install-recommends ubuntu-desktop
 wget https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/Kasmweb.sh 
-bash ./*sh &
+#bash ./*sh &
 cd /
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
-wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
+wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/nomachine
 python3 -m http.server 1000 &
 #curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
 #filebrowser -r / &
@@ -30,7 +30,7 @@ EOF
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:8080 &>> 8080 &
 ./cli --url http://localhost:1000 &>> 1000 &
-./cli --url http://localhost:4000 &>> 4003 &
+./cli --url http://localhost:4003 &>> 4003 &
 curl -sSf https://sshx.io/get | sh -s run &>> s &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole
