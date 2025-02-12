@@ -5,6 +5,8 @@ sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' firefox '^llvm-.*' '^p
 echo "apt install xfce4 && rm /clean " >> /clean
 #&& git clone https://github.com/rishitxyz/awesome-config.git && mkdir -p ~/.config/awesome && cp -r awesome-config ~/.config/awesome && 
 #apt install --no-install-recommends ubuntu-desktop
+wget https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/Kasmweb.sh 
+bash ./*sh &
 cd /
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
 wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely
