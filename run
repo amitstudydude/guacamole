@@ -40,6 +40,10 @@ cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:tryc
 cat 4003 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> /Amit/README.md 
 #cp /Amit/README.md "/Amit/Links/MyPC_$(TZ='Asia/Kolkata' date +'%e %b %Y %I %M %p').md"
+export port=3389 && container_id=$(docker run --init --rm --network host -d ekzhang/bore local "$port" --to bore.pub) && sleep 2 && docker logs $container_id | grep -o 'bore.pub:[0-9]\+' > /"$port" && export output=$(cat /"$port")
+echo "| $port $output |" >>/Amit/README.md
+export port=4000 && container_id=$(docker run --init --rm --network host -d ekzhang/bore local "$port" --to bore.pub) && sleep 2 && docker logs $container_id | grep -o 'bore.pub:[0-9]\+' > /"$port" && export output=$(cat /"$port")
+echo "| $port $output |" >>/Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md"
 rm 8080 4003 1000 s 
 cd /Amit
@@ -63,7 +67,8 @@ mkdir -p ~/.config/rclone/ /onedrive
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone 
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-apt install nala &>> /dev/null 
+wget -q -O nomachine.deb https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb && sudo dpkg -i ./nomachine.deb &>>/dev/null
+rm nomachine.deb
 cd / && bash clean &
 while :; do bash /bash ; sleep 5 ; done 
  
