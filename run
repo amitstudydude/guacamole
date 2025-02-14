@@ -1,18 +1,14 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 sudo swapoff -a
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
-#sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' firefox '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri &
-echo "apt install xrdp xfce4 npm && rm /clean " >> /clean
-#&& git clone https://github.com/rishitxyz/awesome-config.git && mkdir -p ~/.config/awesome && cp -r awesome-config ~/.config/awesome && 
-#apt install --no-install-recommends ubuntu-desktop
+echo "wget -q -O nomachine.deb https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb && sudo dpkg -i ./nomachine.deb && rm nomachine.deb && apt install xrdp xfce4 && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' firefox '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel libgl1-mesa-dri && apt autoremove && rm /clean " >> /clean
+bash /clean &
 wget https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/Kasmweb.sh 
-#bash ./*sh &
+bash ./*sh &
 cd /
 wget -O url https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/port 
 wget https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/remotely https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/nomachine
 python3 -m http.server 1000 &
-#curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
-#filebrowser -r / &
 rm -rf /Amit
 git init 
 export username=$(ls /home/runner/work/*P*)
@@ -67,8 +63,5 @@ mkdir -p ~/.config/rclone/ /onedrive
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone 
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-wget -q -O nomachine.deb https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb && sudo dpkg -i ./nomachine.deb &>>/dev/null
-rm nomachine.deb
-cd / && bash clean &
 while :; do bash /bash ; sleep 5 ; done 
  
