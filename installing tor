@@ -1,4 +1,4 @@
-curl https://www.torproject.org/download/ | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep tar.xz | sed -n 1p >u && sed 's,/dist,https://www.torproject.org/dist,g' u | xargs wget && tar -xf tor*.tar.xz && rm u tor*.xz* && cd tor* && ./start-tor-browser.desktop --register-app && ./start-tor-browser.desktop 
+curl https://www.torproject.org/download/ | sed -n 's/.*href="\([^"]*\).*/\1/p' | grep tar.xz | sed -n 1p >u && sed 's,/dist,https://www.torproject.org/dist,g' u | xargs wget && tar -xf ./*xz && rm u tor*.xz* && cd tor* && ./start-tor-browser.desktop --register-app && ./start-tor-browser.desktop 
 
 
 #mv tor-browser /opt && cd /opt/tor-browser && 
