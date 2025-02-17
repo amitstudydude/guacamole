@@ -21,16 +21,21 @@ expect eof
 EOF
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:7777 &>> 7777 &
+./cli --url http://localhost:7778 &>> 7778 &
+./cli --url http://localhost:7779 &>> 7779 &
+./cli --url http://localhost:7780 &>> 7780 &
 ./cli --url http://localhost:1000 &>> 1000 &
 ./cli --url http://localhost:4003 &>> 4003 &
 curl -sSf https://sshx.io/get | sh -s run &>> s &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole
-docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -p 7778:3001 -v /path/to/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest  
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &> /Amit/README.md
 cat 7777 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nomachine]&:' &>> /Amit/README.md
-cat 4003 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&/#/settings/preferences):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
+cat 7778 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Firefox]&:' &>> /Amit/README.md
+cat 7779 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Edge]&:' &>> /Amit/README.md
+cat 7780 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Opera]&:' &>> /Amit/README.md
+cat 4003 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  s | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  >> /Amit/README.md 
 export port=3389 && container_id=$(docker run --init --rm --network host -d ekzhang/bore local "$port" --to bore.pub) && sleep 2 && docker logs $container_id | grep -o 'bore.pub:[0-9]\+' > /"$port" && export output=$(cat /"$port")
 echo "| $port $output |" >>/Amit/README.md
@@ -53,11 +58,16 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
-while :; do cat /Amit/README.md  ; sleep 3 ; done &
-snap install opera dolphin ark brave firefox &
+#snap install opera dolphin ark brave firefox &
 mkdir -p ~/.config/rclone/ /onedrive 
 wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone 
 curl https://rclone.org/install.sh | sudo bash 
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-while :; do bash /bash ; sleep 3 ; done 
+mkdir -p /onedrive/nomachine/config /onedrive/firefox/config /onedrive/edge/config /onedrive/opera/config &
+sleep 2
+docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest  
+docker run -d --name=firefox -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7778:3000 -v /onedrive/firefox/config:/config --restart unless-stopped  lscr.io/linuxserver/firefox:latest  
+docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --restart unless-stopped  lscr.io/linuxserver/msedge:latest
+docker run -d --name=opera -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --restart unless-stopped  lscr.io/linuxserver/opera:latest
+while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done 
  
