@@ -1,6 +1,8 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 sudo swapoff -a
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
+echo "docker run -d --name=firefox -e PUID=1000 -e PGID=1000 -e FIREFOX_CLI=https://gitlab.com/rajeb73730/Amit  -e TZ=Asia/Kolkata -p 7778:3000 -v /onedrive/firefox/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/firefox:latest  && docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e EDGE_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/msedge:latest && docker run -d --name=opera -e PUID=1000 -e PGID=1000 -e OPERA_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/opera:latest && docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest" >setup 
+bash ./setup &
 echo "cd / && wget -q https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/ubuntu https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb && sudo dpkg -i ./nomachine*.deb && rm ./nomachine*.deb && bash ./ubuntu && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && apt install xrdp npm && bash ./ubuntu && rm /clean " >> /clean
 bash /clean &
 cd /
@@ -65,9 +67,5 @@ curl https://rclone.org/install.sh | sudo bash
 rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 mkdir -p /onedrive/nomachine/config /onedrive/firefox/config /onedrive/edge/config /onedrive/opera/config &
 sleep 2
-docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest  
-docker run -d --name=firefox -e PUID=1000 -e PGID=1000 -e FIREFOX_CLI=https://gitlab.com/rajeb73730/Amit  -e TZ=Asia/Kolkata -p 7778:3000 -v /onedrive/firefox/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/firefox:latest  
-docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e EDGE_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/msedge:latest
-docker run -d --name=opera -e PUID=1000 -e PGID=1000 -e OPERA_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/opera:latest
 while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done 
  
