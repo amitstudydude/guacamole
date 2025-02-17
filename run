@@ -66,8 +66,8 @@ rclone listremotes && rclone mount onedrive: /onedrive --vfs-cache-mode full --u
 mkdir -p /onedrive/nomachine/config /onedrive/firefox/config /onedrive/edge/config /onedrive/opera/config &
 sleep 2
 docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest  
-docker run -d --name=firefox -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7778:3000 -v /onedrive/firefox/config:/config --restart unless-stopped  lscr.io/linuxserver/firefox:latest  
-docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --restart unless-stopped  lscr.io/linuxserver/msedge:latest
-docker run -d --name=opera -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --restart unless-stopped  lscr.io/linuxserver/opera:latest
+docker run -d --name=firefox -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7778:3000 -v /onedrive/firefox/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/firefox:latest  
+docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/msedge:latest
+docker run -d --name=opera -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/opera:latest
 while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done 
  
