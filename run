@@ -8,9 +8,7 @@ echo "mkdir -p ~/.config/rclone/ /onedrive  && wget https://raw.githubuserconten
 #echo "docker run -d --name=firefox -e PUID=1000 -e PGID=1000 -e FIREFOX_CLI=https://gitlab.com/rajeb73730/Amit  -e TZ=Asia/Kolkata -p 7778:3000  -v /onedrive/firefox/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/firefox:latest " >>setup 
 echo "docker pull fhriley/firefox & " >>setup 
 echo "docker pull ghcr.io/amitstudydude/guacamole " >>setup 
-#docker run -it --rm -p 6080:6080 -e VNC_PASSWORD="my" -e STARTING_WEBSITE_URL="https://ublockorigin.com" -e VNC_RESOLUTION="1920x1080" mrcolorrain/vnc-browser:debian
-
-#docker run -d -p 5900:5900 -p 6080:6080 -e STARTING_WEBSITE_URL="https://www.bing.com" -e VNC_PASSWORD="mypassword" -e VNC_RESOLUTION="1920x1080" -e AUTO_START_BROWSER=true -e AUTO_START_XTERM=true mrcolorrain/vnc-browser:alpine
+#docker run -it --rm -p 8080:8080 msjpq/firefox-vnc
 #echo " docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e EDGE_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/msedge:latest " >>setup 
 #echo "docker run -d --name=opera -e PUID=1000 -e PGID=1000 -e OPERA_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/opera:latest ">>setup 
 #echo "docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest " >>setup 
