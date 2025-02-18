@@ -6,14 +6,11 @@ bash /clean &
 cd /
 echo "mkdir -p ~/.config/rclone/ /onedrive  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rclone listremotes && rclone mount onedrive: /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P " >>setup
 #echo "docker run -d --name=firefox -e PUID=1000 -e PGID=1000 -e FIREFOX_CLI=https://gitlab.com/rajeb73730/Amit  -e TZ=Asia/Kolkata -p 7778:3000  -v /onedrive/firefox/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/firefox:latest " >>setup 
-echo "docker pull ghcr.io/amitstudydude/guacamole " >>setup 
+echo "docker pull ghcr.io/amitstudydude/guacamole && docker run -it --rm  --name=firefox -p 5800:5800 -v /onedrive/firefox/config:/config jlesage/firefox &" >>setup 
 #docker run -it --rm -p 8080:8080 msjpq/firefox-vnc
 #echo " docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e EDGE_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/msedge:latest " >>setup 
 #echo "docker run -d --name=opera -e PUID=1000 -e PGID=1000 -e OPERA_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/opera:latest ">>setup 
 #echo "docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest " >>setup 
-#-v /onedrive/microsoft-edge-stable/config:/
-#-v /onedrive/firefox/config:/
-#-v /onedrive/opera/config:/
 bash ./setup &
 python3 -m http.server 1000 &
 rm -rf /Amit
@@ -33,7 +30,7 @@ EOF
 curl -sSf https://sshx.io/get | sh -s run &>> s &
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 #./cli --url http://localhost:7777 &>> 7777 &
-./cli --url http://localhost:7778 &>> 7778 &
+./cli --url http://localhost:5800 &>> 7778 &
 #./cli --url http://localhost:7779 &>> 7779 &
 #./cli --url http://localhost:7780 &>> 7780 &
 ./cli --url http://localhost:1000 &>> 1000 &
@@ -41,7 +38,6 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole 
 #docker run -d --name=firefox -p 7778:5800 -v /onedrive/firefox/config:/config --shm-size 2g fhriley/firefox
-docker run -it --rm  --name=firefox -p 7778:5800 -v /onedrive/firefox/config:/config jlesage/firefox
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &> /Amit/README.md
 #cat 7777 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nomachine]&:' &>> /Amit/README.md
