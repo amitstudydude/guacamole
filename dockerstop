@@ -1,0 +1,8 @@
+#!/bin/bash
+# Stop and remove all containers, then remove all images
+docker stop $(docker ps -aq) 2>/dev/null
+docker rm $(docker ps -aq) 2>/dev/null
+docker rmi $(docker images -q) 2>/dev/null
+# Optionally, prune dangling images
+docker image prune -f
+echo "All Docker containers and images have been removed."
