@@ -41,7 +41,7 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 curl -sSf https://sshx.io/get | sh -s run &>> s &
 docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole 
-docker run -d --name=firefox -p 7778:5800 -v /onedrive/firefox/config:/config --shm-size 5g fhriley/firefox
+docker run -d --name=firefox -p 7778:5800 -v /onedrive/firefox/config:/config fhriley/firefox
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cat 1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &> /Amit/README.md
 #cat 7777 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Nomachine]&:' &>> /Amit/README.md
