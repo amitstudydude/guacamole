@@ -6,6 +6,8 @@ bash /clean &
 cd /
 echo "mkdir -p ~/.config/rclone/ /onedrive  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rclone listremotes && rclone mount onedrive: /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P " >>setup
 echo "docker run -d --name=firefox -e PUID=1000 -e PGID=1000 -e FIREFOX_CLI=https://gitlab.com/rajeb73730/Amit  -e TZ=Asia/Kolkata -p 7778:3000  -v /onedrive/firefox/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/firefox:latest " >>setup 
+#docker run -d --name=firefox -p 5800:5800 -v /docker/appdata/firefox:/config:rw --shm-size 2g fhriley/firefox
+
 #echo " docker run -d --name=edge -e PUID=1000 -e PGID=1000  -e EDGE_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7779:3000 -v /onedrive/microsoft-edge-stable/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/msedge:latest " >>setup 
 #echo "docker run -d --name=opera -e PUID=1000 -e PGID=1000 -e OPERA_CLI=https://gitlab.com/rajeb73730/Amit -e TZ=Asia/Kolkata -p 7780:3000 -v /onedrive/opera/config:/config --shm-size="1gb" --restart unless-stopped  lscr.io/linuxserver/opera:latest ">>setup 
 #echo "docker run -d --name=docker-remote-desktop -e PUID=1000 -e PGID=1000  -e TZ=Asia/Kolkata -p 7777:3000 -v /onedrive/nomachine/config:/config --restart unless-stopped  ghcr.io/lanjelin/docker-remote-desktop:latest " >>setup 
