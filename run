@@ -11,8 +11,9 @@ echo "docker pull ghcr.io/amitstudydude/guacamole && docker run  --name=fir -p 5
 docker run -d \
     --name=firefox \
     -p 5800:5800 \
-    -v /onedrive/firefox/config:/config:rw \
+    -v /docker/appdata/firefox:/config:rw \
     jlesage/firefox
+
 
 
 #docker run -it --rm -p 8080:8080 msjpq/firefox-vnc
