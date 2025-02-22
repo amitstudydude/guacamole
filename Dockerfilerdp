@@ -1,0 +1,4 @@
+FROM ubuntu
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends xrdp firefox sudo wget curl && printf "root\nroot" | passwd root 
+EXPOSE 8080/tcp
+CMD xrdp 
