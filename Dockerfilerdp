@@ -1,4 +1,4 @@
 FROM ubuntu
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends xrdp firefox sudo wget curl && apt-get clean && printf "root\nroot" | passwd root 
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends xrdp xfce4 firefox sudo wget curl && apt-get clean && printf "root\nroot" | passwd root 
 EXPOSE 8080/tcp
 CMD ["/usr/sbin/xrdp", "--nodaemon"] 
