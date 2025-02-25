@@ -39,7 +39,7 @@ echo "| $port $output |" >>/Amit/README.md
 export port=4000 && container_id=$(docker run --init --rm --network host -d ekzhang/bore local "$port" --to bore.pub) && sleep 2 && docker logs $container_id | grep -o 'bore.pub:[0-9]\+' > /"$port" && export output=$(cat /"$port")
 echo "| $port $output |" >>/Amit/README.md
 docker exec -it guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
-cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &> /Amit/README.md
+cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
 cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md"
 rm /8080 /1000 /sx /3389 /4000
