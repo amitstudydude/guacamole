@@ -1,4 +1,4 @@
-docker pull abesnier/guacamole
+docker pull abesnier/guacamole &
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 sudo swapoff -a
 cd /
