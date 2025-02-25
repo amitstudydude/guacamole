@@ -6,7 +6,6 @@ bash /clean &
 docker pull abesnier/guacamole &
 cd /
 echo "mkdir -p ~/.config/rclone/ /onedrive  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive/PC: /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P " >>setup
-echo " wget -O /config/guacamole_db_backup.tar https://github.com/amitstudydude/guacamole/raw/refs/heads/main/guacamole_db_backup.tar" >>setup
 echo " rm ./setup" >>setup
 bash ./setup &
 python3 -m http.server 1000 &
@@ -30,6 +29,7 @@ wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/c
 ./cli --url http://localhost:8080 &>> 8080 &
 #docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 #docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole 
+wget -O /config/guacamole_db_backup.tar https://github.com/amitstudydude/guacamole/raw/refs/heads/main/guacamole_db_backup.tar
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
 sleep 10
 docker exec -it guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
