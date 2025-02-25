@@ -2,8 +2,6 @@ printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && pri
 sudo swapoff -a
 cd /
 python3 -m http.server 1000 &
-mkdir -p /config
-wget -O /config/guacamole_db_backup.tar https://github.com/amitstudydude/guacamole/raw/refs/heads/main/guacamole_db_backup.tar
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:1000 &>> /1000 &
 ./cli --url http://localhost:8080 &>> /8080 &
@@ -31,6 +29,7 @@ expect eof
 EOF
 #docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 #docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole 
+cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  /sx | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  > /Amit/README.md 
