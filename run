@@ -29,9 +29,8 @@ expect eof
 EOF
 #docker run --name guacd -d  -p 4822:4822 guacamole/guacd
 #docker run --name guacamole -dit -p 4003:8080 ghcr.io/amitstudydude/guacamole 
-#cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar
+cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
-rclone copy onedrive:PC/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  /sx | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  > /Amit/README.md 
 export port=3389 && container_id=$(docker run --init --rm --network host -d ekzhang/bore local "$port" --to bore.pub) && sleep 2 && docker logs $container_id | grep -o 'bore.pub:[0-9]\+' > /"$port" && export output=$(cat /"$port")
