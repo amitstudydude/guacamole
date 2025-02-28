@@ -1,4 +1,4 @@
-
+curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash &
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
 sudo swapoff -a
