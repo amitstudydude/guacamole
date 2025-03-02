@@ -7,18 +7,15 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules 
 rm /tmp/log '>/tmp/log 
-echo 'mkdir -p ~/.config/rclone/ /onedrive /config  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash
+mkdir -p ~/.config/rclone/ /onedrive /config  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
+echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash
 cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
-rm /script' >/script 
-echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash &
+' >/script 
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
-rm /setup ' >/setup
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
 echo "apt install xrdp fvwm && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 bash /tmp/log & 
-bash /setup &
 git init 
 export username=$(ls /home/runner/work/*P*)
 git config --global user.name "$username"
