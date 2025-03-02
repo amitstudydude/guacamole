@@ -59,6 +59,6 @@ curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/U
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
 echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"' >>/setup
-while :; do cat /setup  ; bash /setup ; sleep 600 ; done &
+while :; do cat /setup  ; bash /setup ; sleep 900 ; done &
 while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done 
  
