@@ -60,5 +60,5 @@ docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.ta
 
 
 
-while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done 
+while :; do cat /Amit/README.md  ; bash /bash ; bash /setup ; sleep 15 ; done 
  
