@@ -20,9 +20,9 @@ git config --global user.email "$username@proton.me"
 git config --global credential.helper store
 git clone https://gitlab.com/rajeb73730/Amit.git
 cd /Amit
-wget -qO /onedrive/cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /onedrive/cli 
-/onedrive/cli --url http://localhost:1000 &>> /1000 & 
-/onedrive/cli --url http://localhost:8080 &>> /8080 &
+wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /onedrive/cli 
+/cli --url http://localhost:1000 &>> /1000 & 
+/cli --url http://localhost:8080 &>> /8080 &
 sleep 5
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  /sx | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  > /Amit/README.md 
 cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
