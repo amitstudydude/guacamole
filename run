@@ -55,10 +55,7 @@ expect eof
 EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 #snap install opera dolphin ark brave firefox &
-cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar
-docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
-
-
+echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"' >>/setup
 while :; do cat /setup  ; bash /setup ; sleep 300 ; done &
 while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done 
  
