@@ -1,0 +1,43 @@
+echo 'docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
+curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash 
+mkdir -p ~/.config/rclone/ /onedrive /config  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P
+cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"' >/setup
+bash /setup &
+echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
+cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
+printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  && service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
+cd / && python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & wget -O /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli && /cli --url http://localhost:1000 &>> /1000 & /cli --url http://localhost:8080 &>> /8080 &
+echo "apt install xrdp fvwm && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean &>>/dev/null &
+git init 
+export username=$(ls /home/runner/work/*P*)
+git config --global user.name "$username"
+git config --global user.email "$username@proton.me"
+git config --global credential.helper store
+sudo /usr/bin/expect <<EOF
+spawn git clone https://gitlab.com/rajeb73730/Amit.git
+sleep 1
+send -- "rajeb73730@gufutu.com\r"
+sleep 1
+send -- "Satyana@1234\r"
+expect eof
+EOF
+var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  /sx | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  > /Amit/README.md 
+cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
+cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
+cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md" && rm /8080 /1000 /sx
+cd /Amit
+git pull origin
+git add --all
+git pull origin
+export username=$(ls /home/runner/work/*P*)
+git commit -m "$username" 
+sudo /usr/bin/expect <<EOF
+spawn git push origin
+sleep 1
+send -- "rajeb73730@gufutu.com\r"
+sleep 1
+send -- "Satyana@1234\r"
+expect eof
+EOF
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
+while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done
