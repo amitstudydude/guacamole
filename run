@@ -12,7 +12,9 @@ echo "apt install xrdp fvwm && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^do
 cd / 
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & wget -O /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli 
 /cli --url http://localhost:1000 &>> /1000 & 
+sleep 2
 /cli --url http://localhost:8080 &>> /8080 &
+sleep 2
 git init 
 export username=$(ls /home/runner/work/*P*)
 git config --global user.name "$username"
