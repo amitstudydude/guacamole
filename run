@@ -40,4 +40,5 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
+bash /setup
 while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done
