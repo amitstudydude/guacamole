@@ -9,7 +9,8 @@ python3 -m http.server 1000 &
 wget -O cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x ./cli 
 ./cli --url http://localhost:1000 &>> /1000 &
 ./cli --url http://localhost:8080 &>> /8080 &
-echo "cd / && apt install xrdp && wget -q https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/ubuntu https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb && sudo dpkg -i ./nomachine*.deb && rm ./nomachine*.deb && bash ./ubuntu && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean
+#echo "cd / && apt install xrdp && wget -q https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/ubuntu https://download.nomachine.com/download/8.16/Linux/nomachine_8.16.1_1_amd64.deb && sudo dpkg -i ./nomachine*.deb && rm ./nomachine*.deb && bash ./ubuntu && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean
+echo "cd / && apt install xrdp fvwm && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean
 bash /clean &>>/dev/null &
 curl -sSf https://sshx.io/get | sh -s run &>> /sx &
 rm -rf /Amit
