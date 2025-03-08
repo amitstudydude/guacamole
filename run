@@ -23,7 +23,7 @@ cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker 
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
 
-echo "apt install xrdp thunar openbox && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
+echo "apt remove firefox && apt install xrdp thunar openbox && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 
 bash /tmp/log & 
 git init 
