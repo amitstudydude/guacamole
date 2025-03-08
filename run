@@ -12,8 +12,8 @@ echo 'sudo swapoff -a
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules 
 rm /tmp/log '>/tmp/log 
 
-mkdir -p ~/.config/rclone/ /onedrive /config  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-
+mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
+ln -s /onedrive/docker/firefox/firefox ~/.mozilla/
 
 echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash 
 cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
