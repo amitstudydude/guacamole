@@ -1,0 +1,24 @@
+docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
+printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  && service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
+cd / 
+python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
+wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli 
+/cli --url http://localhost:1000 &>> /1000 & 
+/cli --url http://localhost:8080 &>> /8080 &
+wget "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar && mv firefox /opt && rm firefox* && ln -s /opt/firefox/firefox /usr/local/bin/firefox && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications && echo '/usr/local/bin/firefox -p default' >/usr/bin/firefox && chmod +x /usr/bin/firefox
+mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
+ln -s /onedrive/docker/firefox/firefox ~/.mozilla/
+cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
+echo "apt remove firefox && apt install xrdp thunar openbox && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
+git init 
+export username=$(ls /home/runner/work/*P*)
+git config --global user.name "$username"
+git config --global user.email "$username@proton.me"
+git config --global credential.helper store
+git clone https://gitlab.com/rajeb73730/Amit.git
+cd /Amit
+var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  /sx | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  > /Amit/README.md 
+cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
+cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
+cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md" && rm /8080 /1000 /sx
+while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done
