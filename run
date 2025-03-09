@@ -15,9 +15,9 @@ echo "Deleting .mozilla"
 rm -rf /usr/bin/firefox
 rm -rf /opt/firefox
 rm -rf /usr/local/share/applications/firefox.desktop
-rm -rf ~/.mozilla/*
 wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar && mv firefox /opt && rm firefox* && ln -s /opt/firefox/firefox /usr/bin/firefox && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications 
 echo "Done!! linking onedrive to firefox"
+rm -rf ~/.mozilla/*
 ln -s /onedrive/docker/firefox/firefox ~/.mozilla/
 echo "Launching Firefox"
 firefox -p default 
