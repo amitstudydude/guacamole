@@ -11,12 +11,11 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 wget "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar && mv firefox /opt && rm firefox* && ln -s /opt/firefox/firefox /usr/bin/firefox && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications 
 mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 echo '
+clear
 echo "Deleting .mozilla folder"
 rm -rf ~/.mozilla/*
-clear
 echo "Done!! linking onedrive to firefox"
 ln -s /onedrive/docker/firefox/firefox ~/.mozilla/
-clear
 echo "Launching Firefox"
 firefox -p default &
 ' >/firefox
