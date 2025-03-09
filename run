@@ -17,7 +17,7 @@ rm -rf ~/.mozilla/*
 echo "Done!! linking onedrive to firefox"
 ln -s /onedrive/docker/firefox/firefox ~/.mozilla/
 echo "Launching Firefox"
-firefox -p default &
+firefox -p default 
 ' >/firefox
 chmod +x /firefox
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
