@@ -13,7 +13,7 @@ echo '
 fusermount -z -u /onedrive
 rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 echo "Deleting .mozilla"
-rm -rf /usr/bin/firefox* /opt/firefox* /usr/local/share/applications/firefox.desktop* rm -rf ~/.mozilla/*
+rm -rf /usr/bin/firefox* /opt/firefox* /usr/local/share/applications/firefox.desktop* 
 wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar && mv firefox /opt && rm firefox* && ln -s /opt/firefox/firefox /usr/bin/firefox && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications 
 echo "Done!! linking onedrive to firefox"
 rm -rf ~/.mozilla
