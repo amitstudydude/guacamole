@@ -17,7 +17,7 @@ rm -rf /usr/bin/firefox* /opt/firefox* /usr/local/share/applications/firefox.des
 wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar && mv firefox /opt && rm firefox* && ln -s /opt/firefox/firefox /usr/bin/firefox && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications 
 echo "Done!! linking onedrive to firefox"
 rm -rf ~/.mozilla/*
-ln -s /onedrive/docker/firefox/firefox ~/.mozilla/
+ln -s /onedrive/docker/.mozilla /root/
 ' >/firefox
 chmod +x /firefox
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
