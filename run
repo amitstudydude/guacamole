@@ -12,7 +12,7 @@ mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.gi
 #echo 'rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ --verbose '>/bash 
 
 echo '
-while :; do rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ ; sleep 10 ; done &
+while :; do rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ ; sleep 60 ; done &
 cd && fusermount -z -u /onedrive 
 rm -rf ~/.mozilla ~/firefox
 rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent "Mozilla" --cache-dir "cache" --allow-other --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
