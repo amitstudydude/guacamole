@@ -11,12 +11,17 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 #echo 'rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ --verbose '>/bash 
 
-echo 'cd && fusermount -z -u /onedrive ; rm -rf /usr/bin/firefox ; rm -rf /opt/firefox ; rm -rf /usr/local/share/applications/firefox.desktop
+echo '
+while :; do rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ ; sleep 10 ; done &
+cd && fusermount -z -u /onedrive 
+rm -rf ~/.mozilla ~/firefox
 rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent "Mozilla" --cache-dir "cache" --allow-other --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-rm -rf ~/.mozilla && ln -s /onedrive/docker/.mozilla ~/ 
-wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar  
-mv firefox /opt/ && rm -rf firefox* && ln -s /opt/firefox/firefox /usr/bin/firefox && ln -s /opt/firefox/firefox ~/Desktop/ && wget https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications 
-while :; do rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ ; sleep 10 ; done ' >/firefox  
+rm -rf ~/.mozilla 
+ln -s /onedrive/docker/.mozilla ~/ 
+wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar  && rm *tar*
+echo "~/firefox/firefox -private-window" >/usr/bin/start 
+chmod +x /usr/bin/start
+' >/firefox  
 
 chmod +x /firefox
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
