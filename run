@@ -10,7 +10,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:8080 &>> /8080 &
 mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 #echo 'rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ --verbose '>/bash 
-echo 'jwm & xfce4-terminal --tab -e "/browse " '>/etc/xrdp/startwm.sh
+echo 'exec jwm & xfce4-terminal --tab -e "/browse " '>/etc/xrdp/startwm.sh
 echo '
 pkill firefox
 pkill zen
