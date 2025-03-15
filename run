@@ -14,16 +14,16 @@ mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.gi
 echo '
 while :; do rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ ; sleep 60 ; done &
 cd && fusermount -z -u /onedrive 
-rm -rf ~/.mozilla ~/firefox
+rm -rf ~/.mozilla ~/firefox ~/.zen ~/zen
 rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent "Mozilla" --cache-dir "cache" --allow-other --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-rm -rf ~/.mozilla 
 ln -s /onedrive/docker/.mozilla ~/ 
-wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *xz && 7z x *tar  && rm *tar*
-echo "~/firefox/firefox -private-window" >/usr/bin/start 
-chmod +x /usr/bin/start
-' >/firefox  
-
-chmod +x /firefox
+ln -s /onedrive/docker/.zen ~/
+wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *tar* && 7z x *tar && rm -rf *tar*
+wget -O zen.linux-x86_64.tar.xz https://github.com/zen-browser/desktop/releases/latest/download/zen.linux-x86_64.tar.xz && 7z x *tar* && 7z x *tar && rm -rf *tar* 
+echo "~/zen/zen -private-window" >/usr/bin/zen && chmod +x /usr/bin/zen 
+echo "~/firefox/firefox -private-window" >/usr/bin/firefox && chmod +x /usr/bin/firefox
+' >/browse 
+chmod +x /browse
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
 echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash ' >/setup
