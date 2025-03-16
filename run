@@ -1,7 +1,7 @@
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
-echo "apt remove firefox && apt install thunar xfce4-terminal xrdp jwm rofi && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
+echo "apt remove firefox && apt install thunar xfce4-terminal xrdp jwm rofi && echo "exec jwm & xfce4-terminal --tab -e /browse ">/etc/xrdp/startwm.sh && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  && service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cd / 
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
@@ -10,7 +10,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:8080 &>> /8080 &
 mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 #echo 'rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ --verbose '>/bash 
-echo 'exec jwm & xfce4-terminal --tab -e "/browse " '>/etc/xrdp/startwm.sh
+echo "exec jwm & xfce4-terminal --tab -e /browse ">/etc/xrdp/startwm.sh
 echo '
 pkill firefox
 pkill zen
