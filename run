@@ -2,8 +2,7 @@ docker run --network host  --name guacamole -u root -v /config:/config abesnier/
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
 echo "apt remove firefox
-apt install xrdp
-apt install mutter gnome-session gnome-settings-daemon 
+apt install xrdp mutter gnome-session gnome-settings-daemon rofi
 #apt install --no-install-recommends ubuntu-desktop
 #echo 'xfce4-terminal -e jwm & xfce4-terminal --tab -e /browse '>/etc/xrdp/startwm.sh 
 service xrdp restart
