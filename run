@@ -1,7 +1,7 @@
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
-echo "apt remove firefox && apt install thunar xfce4-terminal xrdp jwm rofi && echo "exec jwm & xfce4-terminal --tab -e /browse ">/etc/xrdp/startwm.sh && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
+echo "apt remove firefox && apt install thunar xfce4-terminal xrdp jwm rofi && echo 'exec jwm & xfce4-terminal --tab -e /browse'>/etc/xrdp/startwm.sh && sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove && rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  && service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cd / 
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
