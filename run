@@ -63,7 +63,8 @@ cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker 
 bash /RDPfirefox &
 echo "apt remove firefox
 #apt install --no-install-recommends ubuntu-desktop
-echo 'gnome-terminal -e gnome-session & gnome-terminal --tab -e /browse &'>/etc/xrdp/startwm.sh 
+sed -i '1i\gnome-terminal -e gnome-session & gnome-terminal --tab -e /browse &' /etc/xrdp/startwm.sh 
+#echo "gnome-terminal -e gnome-session & gnome-terminal --tab -e /browse &'>>/etc/xrdp/startwm.sh 
 service xrdp restart
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
 rm /clean " >> /clean && bash /clean &
