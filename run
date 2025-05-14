@@ -1,7 +1,6 @@
 docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
-apt install xrdp mutter gnome-session gnome-settings-daemon nautilus &
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  && service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 cd / 
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
@@ -21,12 +20,8 @@ ln -s /onedrive/docker/.mozilla ~/
 ln -s /onedrive/docker/.zen ~/
 wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *tar* && 7z x *tar && rm -rf *tar*
 wget -O zen.linux-x86_64.tar.xz https://github.com/zen-browser/desktop/releases/latest/download/zen.linux-x86_64.tar.xz && 7z x *tar* && 7z x *tar && rm -rf *tar* 
-#echo "rofi -show run" >/usr/bin/run && chmod +x /usr/bin/run 
 echo "~/zen/zen -private-window" >/usr/bin/zen && chmod +x /usr/bin/zen 
 echo "~/firefox/firefox -private-window" >/usr/bin/firefox && chmod +x /usr/bin/firefox
-#run
-zen &
-firefox &
 ' >/browse 
 chmod +x /browse
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
@@ -61,10 +56,10 @@ EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
 bash /RDPfirefox &
-echo " apt remove firefox htop vim
-#cat /etc/xrdp/startwm.sh >>bak
-#echo 'gnome-terminal -e /browse & '>> new  && cat /etc/xrdp/startwm.sh >>new && cat new && mv new /etc/xrdp/startwm.sh
-service xrdp restart
-sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
-rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
+echo " 
+apt install xrdp mutter gnome-session gnome-settings-daemon nautilus 
+bash /restore
+sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
+rm /clean " >> /clean && bash /clean &
+#> /dev/null 2>&1 &
 while :; do cat /Amit/README.md  ; bash /bash ; sleep 3 ; done
