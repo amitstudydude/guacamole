@@ -62,8 +62,8 @@ curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/U
 cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
 bash /RDPfirefox &
 echo "
-cat /etc/xrdp/startwm.sh >>bak
-echo 'gnome-terminal -e /browse & '>> new  && cat /etc/xrdp/startwm.sh >>new && cat new && mv new /etc/xrdp/startwm.sh
+#cat /etc/xrdp/startwm.sh >>bak
+#echo 'gnome-terminal -e /browse & '>> new  && cat /etc/xrdp/startwm.sh >>new && cat new && mv new /etc/xrdp/startwm.sh
 service xrdp restart
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
 rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
