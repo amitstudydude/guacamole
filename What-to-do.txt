@@ -34,10 +34,14 @@ jobs:
 
 
 Create Proton mail
+verify recovery email in settings>>recovery
 Request desktop site ( GitHub )
 Verify link in new tab page , not by entering OTP
 Go to actions tab create new workflow
 Go https://github.com/amitstudydude/guacamole in workflow
+password guacamole - root/root (case - sensitive)
+after opening setup open terminal and enter /browse
+then type firefox or zen whatever you like
 
 
 ##visit _ https://github.com/$owner/repo/settings/secrets/actions
