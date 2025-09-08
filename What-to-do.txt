@@ -16,21 +16,17 @@ jobs:
         run: export owner=${{ github.actor }} && export repo=${{ github.event.repository.name }} && curl https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/merge | sed '1d' | bash
 
 
-
-
 name: run
 on:
   workflow_dispatch:
   push:
+  issues:
 jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:   
       - name: run
         run: sudo swapoff -a ; sudo apt update && sudo apt install ssh expect && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
-
-
-
 
 
 Create Proton mail
