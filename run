@@ -20,7 +20,7 @@ pkill firefox
 pkill zen
 pkill brave-browser-nightly
 cd && fusermount -z -u /onedrive 
-rm -rf ~/.mozilla ~/firefox ~/.zen ~/zen /usr/bin/zen /usr/bin/firefox ~/.brave 
+rm -rf ~/.mozilla ~/firefox ~/.zen ~/zen /usr/bin/zen /usr/bin/firefox 
 rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent "Mozilla" --cache-dir "cache" --allow-other --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 ln -s /onedrive/docker/.mozilla ~/ 
 ln -s /onedrive/docker/.brave ~/.brave 
