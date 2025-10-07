@@ -18,11 +18,14 @@ mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.gi
 echo '
 pkill firefox
 pkill zen
+pkill brave-browser-nightly
 cd && fusermount -z -u /onedrive 
-rm -rf ~/.mozilla ~/firefox ~/.zen ~/zen /usr/bin/zen /usr/bin/firefox
+rm -rf ~/.mozilla ~/firefox ~/.zen ~/zen /usr/bin/zen /usr/bin/firefox ~/.brave 
 rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent "Mozilla" --cache-dir "cache" --allow-other --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 ln -s /onedrive/docker/.mozilla ~/ 
+ln -s /onedrive/docker/.brave ~/.brave 
 ln -s /onedrive/docker/.zen ~/
+sudo apt remove --purge -y brave-browser-nightly || apt install curl -y && curl -fsS https://dl.brave.com/install.sh | CHANNEL=nightly sh
 wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *tar* && 7z x *tar && rm -rf *tar*
 wget -O zen.linux-x86_64.tar.xz https://github.com/zen-browser/desktop/releases/latest/download/zen.linux-x86_64.tar.xz && 7z x *tar* && 7z x *tar && rm -rf *tar* 
 echo "~/zen/zen -private-window" >/usr/bin/zen && chmod +x /usr/bin/zen 
