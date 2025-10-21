@@ -16,6 +16,13 @@ mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.gi
 #echo 'rclone move onedrive:PC/docker/.mozilla/Downloads/ onedrive:PC/docker/Downloads/ --verbose '>/bash 
 #echo "exec jwm & xfce4-terminal --tab -e /browse ">/etc/xrdp/startwm.sh
 echo '
+
+#rm -rf ~/.mozilla ~/firefox
+#ln -s /onedrive/docker/.mozilla ~/ 
+#wget -O firefox.tar.xz "https://download.mozilla.org/?product=firefox-nightly-latest&os=linux64&lang=en-US" --trust-server-names && 7z x *tar* && 7z x *tar && rm -rf *tar*
+#alias firefox="~/firefox/firefox -private-window"
+
+
 pkill firefox
 pkill zen
 cd && fusermount -z -u /onedrive 
