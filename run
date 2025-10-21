@@ -38,7 +38,8 @@ wget -O zen.linux-x86_64.tar.xz https://github.com/zen-browser/desktop/releases/
 #echo "~/firefox/firefox -private-window" >/usr/bin/firefox && chmod +x /usr/bin/firefox
 alias brave="brave-browser-nightly --no-sandbox"
 alias zen="~/zen/zen -private-window"
-alias firefox="~/firefox/firefox -private-window"
+alias fox="~/firefox/firefox -private-window"
+echo "fox brave zen installed"
 ' >/browse 
 chmod +x /browse
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
