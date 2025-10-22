@@ -2,7 +2,7 @@ docker run --network host  --name guacamole -u root -v /config:/config abesnier/
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
 echo " 
-apt install xrdp mutter gnome-session gnome-settings-daemon nautilus 
+apt install xrdp nautilus 
 bash /restore
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
 rm /clean " >> /clean && bash /clean &
