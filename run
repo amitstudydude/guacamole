@@ -64,7 +64,6 @@ cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/K
 git pull origin
 git add --all
 git pull origin
-apt install expect
 export username=$(ls /home/runner/work/*P*)
 git commit -m "$username" 
 sudo /usr/bin/expect <<EOF
