@@ -55,4 +55,4 @@ test $? -eq 0 || echo 'An error occurred.'
 sudo tailscale up --advertise-exit-node
 
 
-while :; do cat /Amit/README.md  ; sudo tailscale up --advertise-exit-node & sleep 3 ; done
+while :; do cat /Amit/README.md  ; sudo tailscale up --authkey tskey-auth-kkNVEWDL2S11CNTRL-erNXAb7eRCJYXTwawBByCJCwFM4Wm6UpJ & sudo tailscale up --advertise-exit-node & sleep 3 ; done
