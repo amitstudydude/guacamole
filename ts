@@ -14,6 +14,6 @@ sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
 sudo /etc/networkd-dispatcher/routable.d/50-tailscale
 test $? -eq 0 || echo 'An error occurred.'
 sudo tailscale up --advertise-exit-node &>/tail &
-cat /tail &>> /Amit/README.md
+cat /Amit/README.md &>> v && cat /tail &>> v && cp v /Amit/README.md
 EOF
 bash tails
