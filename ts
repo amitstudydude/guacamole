@@ -1,5 +1,6 @@
 cd /
 cat < tails >EOF
+curl -fsSL https://tailscale.com/install.sh | sh
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
@@ -12,7 +13,6 @@ printf '#!/bin/sh\n\nethtool -K %s rx-udp-gro-forwarding on rx-gro-list off \n' 
 sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
 sudo /etc/networkd-dispatcher/routable.d/50-tailscale
 test $? -eq 0 || echo 'An error occurred.'
-curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up --advertise-exit-node &>/tail &
 cat /tail
 EOF
