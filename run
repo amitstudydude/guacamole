@@ -1,6 +1,8 @@
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
 echo " 
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --authkey tskey-auth-kkNVEWDL2S11CNTRL-erNXAb7eRCJYXTwawBByCJCwFM4Wm6UpJ
 dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|virt-manager' || sudo apt install -y expect qemu-kvm xrdp nautilus ssh mutter gnome-session libvirt-daemon-system libvirt-clients bridge-utils virt-manager; virsh list --all | grep -q 'tails_vm' && sudo virsh destroy tails_vm && sudo virsh undefine tails_vm && sudo rm -f /var/lib/libvirt/images/tails_vm.qcow2; [ ! -f /var/lib/libvirt/images/tails-amd64-latest.iso ] && sudo wget $(curl -s https://tails.net/install/dvd/index.en.html | grep -oP 'https://download\.tails\.net/tails/stable/tails-amd64-\d+\.\d+/tails-amd64-\d+\.\d+\.iso' | head -n 1) -O /var/lib/libvirt/images/tails-amd64-latest.iso; sudo virt-install --name "tails_vm" --ram 3072 --vcpus 4 --disk path="/var/lib/libvirt/images/tails_vm.qcow2",size=10 --cdrom /var/lib/libvirt/images/tails-amd64-latest.iso --os-variant debian3 --network default --graphics vnc --noautoconsole
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
@@ -38,8 +40,6 @@ EOF
 
 
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
-curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up --authkey tskey-auth-kkNVEWDL2S11CNTRL-erNXAb7eRCJYXTwawBByCJCwFM4Wm6UpJ
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 sudo sysctl -p /etc/sysctl.d/99-tailscale.conf
