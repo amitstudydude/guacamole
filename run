@@ -1,3 +1,5 @@
+printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
+cd / 
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
 echo " 
@@ -8,8 +10,6 @@ service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_con
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
 dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|virt-manager' || sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
 rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
-printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
-cd / 
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
 wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli 
 /cli --url http://localhost:1000 &>> /1000 & 
@@ -37,8 +37,8 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-
-
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --authkey tskey-auth-kkNVEWDL2S11CNTRL-erNXAb7eRCJYXTwawBByCJCwFM4Wm6UpJ
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
