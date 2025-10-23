@@ -7,7 +7,7 @@ dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
 dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|virt-manager' || sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
-rm /clean " >> /clean && bash /clean &
+rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 cd / 
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
