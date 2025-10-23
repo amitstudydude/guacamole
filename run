@@ -39,4 +39,4 @@ expect eof
 EOF
 
 
-while :; do cat /Amit/README.md  ; cat /tail ; sudo tailscale up --advertise-exit-node &>/tail & sleep 3 ; done
+while :; do cat /Amit/README.md  ; sleep 3 ; done
