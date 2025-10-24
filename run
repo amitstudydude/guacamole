@@ -11,6 +11,7 @@ dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 sudo apt -y -qq -o=Dpkg::Use-Pty=0 remove -y htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel && apt autoremove 
 dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|virt-manager' || sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+bash /restore
 rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 (echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash ' >/RDPfirefox && bash /RDPfirefox & docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && bash /restore ) &
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
@@ -38,6 +39,6 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-
+bash /restore
 
 while :; do cat /Amit/README.md  ; sleep 3 ; done
