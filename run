@@ -1,6 +1,6 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 cd / 
-(docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash ' >/RDPfirefox && bash /RDPfirefox && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && sleep 60 && bash /restore ) &
+(docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && sleep 60 && bash /restore ) &
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
 echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole" ' >/restore
@@ -15,6 +15,7 @@ dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|
 bash /restore
 rm /clean " >> /clean && bash /clean > /dev/null 2>&1 &
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
+curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash 
 mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 git init 
 export username=$(ls /home/runner/work/*P*)
@@ -39,5 +40,6 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
+bash /restore
 
-while :; do cat /Amit/README.md ; cat /sx ; sleep 3 ; done
+while :; do cat /Amit/README.md ; sleep 3 ; done
