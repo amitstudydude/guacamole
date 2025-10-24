@@ -39,21 +39,5 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 
-##setting up scripts 
-echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
-cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
-echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole" ' >/restore
-
-#echo 'curl https://raw.githubusercontent.com/amitstudydude/new-lev/refs/heads/main/dockerfirefoxrdp | bash ' >/RDPfirefox && bash /RDPfirefox & docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole"
-
-
-
-
-
-
-
-
-
-
 
 while :; do cat /Amit/README.md  ; sleep 3 ; done
