@@ -1,5 +1,3 @@
-cd /
-cat < tails >EOF
 curl -fsSL https://tailscale.com/install.sh | sh
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
 echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf
@@ -14,7 +12,3 @@ sudo chmod 755 /etc/networkd-dispatcher/routable.d/50-tailscale
 sudo /etc/networkd-dispatcher/routable.d/50-tailscale
 test $? -eq 0 || echo 'An error occurred.'
 sudo tailscale up --advertise-exit-node &>/tail &
-cat /tail
-#cat /Amit/README.md &>> v && cat /tail &>> v && cp v /Amit/README.md
-EOF
-bash tails
