@@ -24,6 +24,7 @@ git config --global credential.helper store
 git clone https://gitlab.com/rajeb73730/Amit.git
 cd /Amit
 var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}' /sx | sed 's/^.......//' | sed 's/[^[:print:]\t]//g'); var2=${var%[0m}; echo "$var2" | awk '{print "(" $0 ") | "}' | sed 's|https*://sshx|[sshx]https|' > /Amit/README.md
+#var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}' /sx | sed 's/^.......//' | sed 's/[^[:print:]\t]//g'); var2=${var%[0m}; echo "$var2" | awk '{print "(" $0 ") | "}' | sed 's|https*://sshx|[sshx]https|' > /Amit/README.md
 #var=$(awk '{for(i=1;i<=NF;i++) if($i ~ /https:\/\/sshx.io/) print $i}'  /sx | sed 's/^.......//' | sed $'s/[^[:print:]\t]//g') && var2=${var%[0m} && echo $var2  | awk '{print "(" $0 ") | " }' | sed 's:(https*:[sshx]&:'  > /Amit/README.md 
 cat /tail &>> /Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md" && rm /sx 
