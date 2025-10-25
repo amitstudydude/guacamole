@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:   
       - name: run
-        run: sudo swapoff -a ; sudo apt update &&  printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin ; printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
+        run: sudo swapoff -a ; sudo apt update &&  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner && printf "root\nroot" | sudo passwd runneradmin ; printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
 
 
 Create Proton mail
