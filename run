@@ -1,7 +1,7 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 cd / 
-curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash 
 (docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && sleep 60 && bash /restore ) &
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash 
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
 echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && docker exec guacamole bash -c "pg_restore -d guacamole_db guacamole_db_backup.tar -c -U guacamole" ' >/restore
