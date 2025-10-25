@@ -1,0 +1,5 @@
+sudo passwd root
+docker run -d --name=brave   -p 8080:3000 --restart unless-stopped  linuxserver/brave & docker run -d --name=firefox -p 3000:3000 --restart unless-stopped linuxserver/firefox &
+docker run -d --name tailscale1 --network host --cap-add=NET_ADMIN tailscale/tailscale && docker exec -it tailscale1 tailscale up --advertise-exit-node --accept-dns=false
+while :; do ls ; sleep 3; clear; done
+
