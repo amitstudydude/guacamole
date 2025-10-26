@@ -1,5 +1,5 @@
 (curl -sSf https://sshx.io/get | sh -s run | grep -oP 'https:\/\/sshx\.io\/\S+' | sed 's/\x1b\[[0-9;]*m//g' | sed 's/[^[:print:]\t]//g' > sx) &
-docker run -d --name=f1 -p 4000:3000 -p 4001:3001 --restart unless-stopped lscr.io/linuxserver/firefox ; docker run -d --name=f2 -p 3000:3000 -p 3001:3001 --restart unless-stopped lscr.io/linuxserver/firefox
+ducker pull lscr.io/linuxserver/firefox ; docker run -d --name=f1 -p 4000:3000 -p 4001:3001 --restart unless-stopped lscr.io/linuxserver/firefox & docker run -d --name=f2 -p 3000:3000 -p 3001:3001 --restart unless-stopped lscr.io/linuxserver/firefox
 docker run -d --name tailscale1 --network host --cap-add=NET_ADMIN tailscale/tailscale 
 while :; do sudo apt update ; sleep 3; clear; done
 docker exec -it tailscale1 tailscale up --advertise-exit-node --accept-dns=false
