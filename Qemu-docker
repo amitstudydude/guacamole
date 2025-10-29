@@ -1,5 +1,6 @@
 pkill :8006
 docker rm -f $(docker ps --filter "publish=8006" -q)
-url=$(curl -s https://tails.net/install/dvd/index.en.html | grep -oP 'https://download\.tails\.net/tails/stable/tails-amd64-\d+\.\d+/tails-amd64-\d+\.\d+\.iso' | head -n 1) && docker run -it --rm --name qemu -e "BOOT=$url" -e "BOOT_MODE=Legacy" -e "NET_USER=on" -e "RAM_SIZE=4G" -e "CPU_CORES=4" -p 8006:8006 --device=/dev/kvm  -v "${PWD:-.}/qemu:/storage" --stop-timeout 120 docker.io/qemux/qemu
-
+#for custom os                 url=$(curl -s https://tails.net/install/dvd/index.en.html | grep -oP 'https://download\.tails\.net/tails/stable/tails-amd64-\d+\.\d+/tails-amd64-\d+\.\d+\.iso' | head -n 1) && docker run -it --rm --name qemu -e "BOOT=$url" -e "BOOT_MODE=Legacy" -e "NET_USER=on" -e "RAM_SIZE=4G" -e "CPU_CORES=4" -p 8006:8006 --device=/dev/kvm  -v "${PWD:-.}/qemu:/storage" --stop-timeout 120 docker.io/qemux/qemu
+docker run -it --rm --name qemu -e "BOOT=tails" -e "BOOT_MODE=Legacy" -e "NET_USER=on" -e "RAM_SIZE=4G" -e "CPU_CORES=4" -p 8006:8006 --device=/dev/kvm  -v "${PWD:-.}/qemu:/storage" --stop-timeout 120 docker.io/qemux/qemu
+#https://github.com/qemus/qemu
 
