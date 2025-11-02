@@ -28,8 +28,8 @@ on:
     types: [opened, edited, deleted, closed, reopened, transferred, pinned, unpinned, labeled, unlabeled]
   issue_comment:
     types: [created, edited, deleted]
-  schedule:
-    - cron: '30 8 * * *' # daily run at UTC midnight; change as needed
+ # schedule:
+ #   - cron: '30 8 * * *' # daily run at UTC midnight; change as needed
   workflow_dispatch: {}        # manual run
   repository_dispatch: {}      # external dispatch
   workflow_call: {}            # callable by other workflows
