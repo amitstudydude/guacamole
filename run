@@ -1,5 +1,6 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 cd / 
+(cd / && git clone https://github.com/denizsafak/abogen.git && cd abogen/abogen && docker build --progress plain -t abogen .  && docker stop abogen ; docker rm abogen ; docker run --name abogen -v /abogen:/config -p 5800:5800 -p 5900:5900 abogen ) &
 (docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && sleep 60 && bash /restore ) &
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash 
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
