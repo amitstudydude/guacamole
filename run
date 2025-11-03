@@ -82,6 +82,7 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 bash /restore
 
 while :; do cat /Amit/README.md ; sleep 300 ; done
