@@ -62,12 +62,13 @@ git config --global user.email "$username@proton.me"
 git config --global credential.helper store
 git clone https://gitlab.com/rajeb73730/Amit.git
 cd /Amit
+snap install firefox
 grep -oP 'https:\/\/sshx\.io\/\S+' /sx | sed 's/\x1b\[[0-9;]*m//g' | sed 's/[^[:print:]\t]//g' > /Amit/README.md
-cat /tail &>> /Amit/README.md
 cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
 cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
 cat /5800 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Abogen]&:' &>> /Amit/README.md
 cat /8006 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[qemu]&:' &>> /Amit/README.md
+cat /tail &>> /Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md"
 git pull origin
 git add --all
@@ -83,7 +84,7 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
-snap install firefox
+snap install brave
 bash /restore
 
 while :; do cat /Amit/README.md ; sleep 300 ; done
