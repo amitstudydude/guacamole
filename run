@@ -77,7 +77,7 @@ send -- "Satyana@1234\r"
 expect eof
 EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
-snap install brave
+cat /Amit/README.md
 
 echo 'docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar"
 cp /config/guacamole_db_backup.tar /onedrive/guacamole_db_backup.tar1' >/backup
