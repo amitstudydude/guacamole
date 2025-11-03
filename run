@@ -3,7 +3,7 @@ cd /
 
 
 
-(cd / && git clone https://github.com/denizsafak/abogen.git && cd abogen/abogen && docker build --progress plain -t abogen .  && docker stop abogen ; docker rm abogen ; docker run --name abogen -v /abogen:/config -p 5800:5800 -p 5900:5900 abogen ) &
+(cd / && git clone https://github.com/denizsafak/abogen.git && cd abogen/abogen && docker build --progress plain -t abogen .  && docker stop abogen ; docker rm abogen ; docker run --name abogen -v /abogen:/config -p 5800:5800 -p 5900:5900 abogen ) &> /dev/null 2>&1 &
 #(pkill :8006 ; docker rm -f $(docker ps --filter "publish=8006" -q) ; rm -rf ~/qemu && mkdir -p ~/qemu /onedrive/Qemu && 7z x -y /onedrive/Qemu/backup.7z -o~/qemu 2>/dev/null || echo "⚠️ No previous backup found, starting fresh"; docker run -it --rm --name qemu -e "BOOT=tails" -e "BOOT_MODE=Legacy" -e "NET_USER=on" -e "RAM_SIZE=4G" -e "CPU_CORES=4" -e "DISK_SIZE=5G" -p 8006:8006 --device=/dev/kvm  -v "$HOME/qemu:/storage" --stop-timeout 120 docker.io/qemux/qemu & echo 'docker stop qemu && 7z a -t7z -mx=9 -y /onedrive/Qemu/backup.7z ~/qemu/*' >/qemu && chmod +x /qemu ) &
 (docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && sleep 60 && bash /restore ) &
 (docker run -d --name t1 --network host --cap-add=NET_ADMIN tailscale/tailscale  ; docker exec t1 tailscale up --advertise-exit-node --accept-dns=false &>>/tail ) &
@@ -34,7 +34,7 @@ sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android
 
 
 
-
+apt install expect
 echo " 
 #dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|virt-manager' || sudo apt install -y expect openbox gnome-session nautilus qemu-kvm xrdp ssh libvirt-daemon-system libvirt-clients bridge-utils virt-manager ; virsh list --all | grep -q 'tails_vm' && sudo virsh destroy tails_vm && sudo virsh undefine tails_vm && sudo rm -f /var/lib/libvirt/images/tails_vm.qcow2; [ ! -f /var/lib/libvirt/images/tails-amd64-latest.iso ] && sudo wget $(curl -s https://tails.net/install/dvd/index.en.html | grep -oP 'https://download\.tails\.net/tails/stable/tails-amd64-\d+\.\d+/tails-amd64-\d+\.\d+\.iso' | head -n 1) -O /var/lib/libvirt/images/tails-amd64-latest.iso; sudo virt-install --name "tails_vm" --ram 4084 --cdrom /var/lib/libvirt/images/tails-amd64-latest.iso --os-variant debian3 --network default --noautoconsole 
 sudo apt install -y expect gnome-session nautilus xrdp ssh 
