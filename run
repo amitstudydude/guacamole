@@ -20,7 +20,7 @@ python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx 
 wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli 
 /cli --url http://localhost:1000 &>> /1000 & 
 /cli --url http://localhost:8080 &>> /8080 &
-/cli --url http://localhost:5800 &>> /5080 &
+/cli --url http://localhost:5800 &>> /5800 &
 /cli --url http://localhost:8006 &>> /8006 &
 
 
