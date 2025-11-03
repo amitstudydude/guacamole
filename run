@@ -56,6 +56,7 @@ git config --global credential.helper store
 git clone https://gitlab.com/rajeb73730/Amit.git
 cd /Amit
 snap install firefox
+docker stop t1 ; docker rm t1 ; docker run -d --name t1 --network host --cap-add=NET_ADMIN tailscale/tailscale  ; docker exec t1 tailscale up --advertise-exit-node --accept-dns=false &>/tail & sleep 5
 grep -oP 'https:\/\/sshx\.io\/\S+' /sx | sed 's/\x1b\[[0-9;]*m//g' | sed 's/[^[:print:]\t]//g' > /Amit/README.md
 cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
 cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
