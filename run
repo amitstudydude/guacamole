@@ -51,7 +51,7 @@ mkdir -p ~/.config/rclone/ /onedrive /config ~/.mozilla/  && wget https://raw.gi
 
 
 
-docker pull ubuntu
+#docker pull ubuntu
 
 git init 
 export username=$(ls /home/runner/work/*P*)
