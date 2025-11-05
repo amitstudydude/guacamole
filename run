@@ -16,8 +16,8 @@ cd /
 (cd / && git clone https://github.com/denizsafak/abogen.git && cd abogen/abogen && docker build --progress plain -t abogen .  && docker stop abogen ; docker rm abogen ; docker run --name abogen -v /abogen:/config -p 5800:5800 -p 5900:5900 abogen ) &
 (docker run -d --name qemu -e "BOOT=tails" -e "BOOT_MODE=Legacy" -e "NET_USER=on" -e "RAM_SIZE=4G" -e "CPU_CORES=4" -e "DISK_SIZE=1G" -p 8006:8006 --device=/dev/kvm  -v "$HOME/qemu:/storage" --stop-timeout 120 docker.io/qemux/qemu  ) & 
 (docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && mkdir -p ~/.config/rclone/ /onedrive && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P ; bash /restore ) &
-(docker run -d --name t1 --restart unless-stopped --network host --cap-add=NET_ADMIN tailscale/tailscale  ; docker exec t1 tailscale up --advertise-exit-node --accept-dns=false &>>/tail ) &
-
+#(docker run -d --name t1 --restart unless-stopped --network host --cap-add=NET_ADMIN tailscale/tailscale  ; docker exec t1 tailscale up --advertise-exit-node --accept-dns=false &>>/tail ) &
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash 
 
 
 
