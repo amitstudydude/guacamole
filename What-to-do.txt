@@ -1,4 +1,5 @@
 name: run
+on:
   issues:
     types: [opened, edited, deleted, closed, reopened, transferred, pinned, unpinned, labeled, unlabeled]
   issue_comment:
