@@ -1,1 +1,29 @@
-wget -O Donut.Browser_latest_amd64.deb $(wget -qO- https://api.github.com/repos/zhom/donutbrowser/releases/latest | grep "browser_download_url" | grep 'amd64\.deb"' | sed -E 's/.*"([^"]+)".*/\1/') && sudo apt install Donut.Browser_latest_amd64.deb && rm -rf Donut.Browser_latest_amd64.deb 
+#wget -O Donut.Browser_latest_amd64.deb $(wget -qO- https://api.github.com/repos/zhom/donutbrowser/releases/latest | grep "browser_download_url" | grep 'amd64\.deb"' | sed -E 's/.*"([^"]+)".*/\1/') && sudo apt install Donut.Browser_latest_amd64.deb && rm -rf Donut.Browser_latest_amd64.deb 
+
+
+
+
+
+
+
+
+
+apt install tor
+pip install camoufox[geoip]
+
+cat >y.py <<EOF
+from camoufox.sync_api import Camoufox
+with Camoufox(
+    window=(720,1080),
+    geoip=True,
+    proxy={
+        'server': 'socks5://127.0.0.1:9050',
+    }
+) as browser:
+    page = browser.new_page()
+    page.goto("https://www.browserscan.net")
+    input("Press Enter here after closing the browser to finish...")
+
+
+EOF
+python y.py
