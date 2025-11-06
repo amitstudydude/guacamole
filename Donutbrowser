@@ -1,0 +1,1 @@
+wget -O Donut.Browser_latest_amd64.deb $(wget -qO- https://api.github.com/repos/zhom/donutbrowser/releases/latest | grep "browser_download_url" | grep 'amd64\.deb"' | sed -E 's/.*"([^"]+)".*/\1/') && sudo apt install Donut.Browser_latest_amd64.deb && rm -rf Donut.Browser_latest_amd64.deb 
