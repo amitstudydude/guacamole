@@ -8,9 +8,7 @@
 
 
 
-apt install tor
-pip install camoufox[geoip]
-
+apt install tor && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox ">> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ">> p.py ; echo "    geoip=True, ">> p.py ; echo "    proxy={  ">> p.py ; echo "        'server': 'socks5://127.0.0.1:9050',  ">> p.py ; echo "    }   ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && tor & python p.py
 cat >y.py <<EOF
 from camoufox.sync_api import Camoufox
 with Camoufox(
