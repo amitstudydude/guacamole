@@ -38,7 +38,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:5800 &>> /5800 &
 /cli --url http://localhost:8006 &>> /8006 &
 /cli --url http://localhost:3000 &>> /3000 &
-
+/cli --url http://localhost:14500 &>> /14500 &
 
 
 
@@ -62,6 +62,7 @@ cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:try
 cat /5800 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Abogen]&:' &>> /Amit/README.md
 cat /8006 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[qemu]&:' &>> /Amit/README.md
 cat /3000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[brave]&:' &>> /Amit/README.md
+cat /14500 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[xpra]&:' &>> /Amit/README.md
 cat /tail &>> /Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md"
 git pull origin
