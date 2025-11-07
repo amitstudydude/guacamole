@@ -8,10 +8,10 @@
 python -m venv venv && source venv/bin/activate
 
 ##without tor 
-pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080)" ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
+python -m venv venv && source venv/bin/activate && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
 
 ##with tor
-apt install tor && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ">> p.py ; echo "    geoip=True, ">> p.py ; echo "    proxy={  ">> p.py ; echo "        'server': 'socks5://127.0.0.1:9050',  ">> p.py ; echo "    }   ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && service tor status & python p.py
+python -m venv venv && source venv/bin/activate && apt install tor && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ">> p.py ; echo "    geoip=True, ">> p.py ; echo "    proxy={  ">> p.py ; echo "        'server': 'socks5://127.0.0.1:9050',  ">> p.py ; echo "    }   ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && service tor status & python p.py
 
 
 cat >y.py <<EOF
