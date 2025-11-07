@@ -2,7 +2,7 @@ printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && pri
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
 cat >/xpra.sh <<'XSH'
-xpra stop all  ; xpra start :100  --start-child=xterm --start-child="xfce4-terminal --execute bash -c 'bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on    &
+xpra stop all  ; xpra start :100 --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on    &
 XSH
 cat >/cf <<'CF'
 export XDG_RUNTIME_DIR="/run/user/0" && cd /tmp && python -m venv venv && source venv/bin/activate && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.google.com")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
@@ -10,7 +10,7 @@ CF
 echo " 
 apt install expect
 #dpkg -l | grep -qE 'qemu-kvm|libvirt-daemon-system|libvirt-clients|bridge-utils|virt-manager' || sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager ; virsh list --all | grep -q 'tails_vm' && sudo virsh destroy tails_vm && sudo virsh undefine tails_vm && sudo rm -f /var/lib/libvirt/images/tails_vm.qcow2; [ ! -f /var/lib/libvirt/images/tails-amd64-latest.iso ] && sudo wget $(curl -s https://tails.net/install/dvd/index.en.html | grep -oP 'https://download\.tails\.net/tails/stable/tails-amd64-\d+\.\d+/tails-amd64-\d+\.\d+\.iso' | head -n 1) -O /var/lib/libvirt/images/tails-amd64-latest.iso; sudo virt-install --name "tails_vm" --ram 4084 --cdrom /var/lib/libvirt/images/tails-amd64-latest.iso --os-variant debian3 --network default --noautoconsole 
-sudo apt install -y expect nautilus xrdp ssh xterm xpra fluxbox xfce4-terminal && bash /xrpa.sh 
+sudo apt install -y expect nautilus xrdp ssh xpra fluxbox xfce4-terminal && bash /xrpa.sh 
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 apt remove gnome*
 sudo apt remove -y  htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel >> /dev/null 
