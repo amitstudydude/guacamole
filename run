@@ -16,7 +16,7 @@ service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_con
 apt remove gnome*
 sudo apt remove -y  htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel >> /dev/null 
 apt autoremove
-sudo apt install -y expect nautilus xrdp ssh fluxbox
+#sudo apt install -y expect nautilus xrdp ssh fluxbox
 bash /restore
 rm /clean " >> /clean && bash /clean  &
 cd /  
