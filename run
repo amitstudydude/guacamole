@@ -2,10 +2,10 @@ printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && pri
 echo 'sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules && rm /tmp/log '>/tmp/log && bash /tmp/log & 
 cat >/xpra.sh <<'XSH'
-xpra stop all  ; xpra start :100 --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on    &
+xpra stop all  ; xpra start :100 --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on    &
 XSH
 cat >/cf <<'CF'
-export XDG_RUNTIME_DIR="/run/user/0" && cd /tmp && python -m venv venv && source venv/bin/activate && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080) ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.google.com")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
+cd /tmp && sudo apt update && sudo apt install python3 pip && python3 -m venv venv && source venv/bin/activate && python3 -m pip install camoufox[geoip] && python3 -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080) ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.google.com")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python3 p.py
 CF
 echo " 
 apt install expect
