@@ -5,7 +5,7 @@ cat >/xpra.sh <<'XSH'
 xpra stop all  ; xpra start :100  --start-child=xterm --start-child="xfce4-terminal --execute bash -c 'bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on    &
 XSH
 cat >/cf <<'CF'
-export XDG_RUNTIME_DIR="/run/user/0" && cd /tmp && python -m venv venv && source venv/bin/activate && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080) ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
+export XDG_RUNTIME_DIR="/run/user/0" && cd /tmp && python -m venv venv && source venv/bin/activate && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.google.com")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
 CF
 echo " 
 apt install expect
