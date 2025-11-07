@@ -1,0 +1,37 @@
+#wget -O Donut.Browser_latest_amd64.deb $(wget -qO- https://api.github.com/repos/zhom/donutbrowser/releases/latest | grep "browser_download_url" | grep 'amd64\.deb"' | sed -E 's/.*"([^"]+)".*/\1/') && sudo apt install Donut.Browser_latest_amd64.deb && rm -rf Donut.Browser_latest_amd64.deb 
+
+
+
+
+#create vm
+
+#python -m venv venv && source venv/bin/activate
+
+##without tor ## forcing root user
+export XDG_RUNTIME_DIR="/run/user/0" && cd /tmp && python -m venv venv && source venv/bin/activate && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080) ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
+
+##with tor
+#python -m venv venv && source venv/bin/activate && apt install tor && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ">> p.py ; echo "    geoip=True, ">> p.py ; echo "    proxy={  ">> p.py ; echo "        'server': 'socks5://127.0.0.1:9050',  ">> p.py ; echo "    }   ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && service tor status & python p.py
+
+
+cat >y.py <<EOF
+from camoufox.sync_api import Camoufox
+with Camoufox(
+    window=(720,1080),
+    geoip=True,
+    proxy={
+        'server': 'socks5://127.0.0.1:9050',
+    }
+) as browser:
+    page = browser.new_page()
+    page.goto("https://www.browserscan.net")
+    input("Press Enter here after closing the browser to finish...")
+
+
+EOF
+#python y.py
+
+
+
+
+export XDG_RUNTIME_DIR="/run/user/0"
