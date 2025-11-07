@@ -3,8 +3,9 @@
 
 
 
+#create vm
 
-
+python -m venv venv && source venv/bin/activate
 
 ##without tor 
 pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080)" ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
