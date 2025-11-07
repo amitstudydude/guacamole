@@ -6,9 +6,13 @@
 
 
 
+##without tor 
+pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox ">> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python p.py
 
-
+##with tor
 apt install tor && pip install camoufox[geoip] && python -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox ">> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ">> p.py ; echo "    geoip=True, ">> p.py ; echo "    proxy={  ">> p.py ; echo "        'server': 'socks5://127.0.0.1:9050',  ">> p.py ; echo "    }   ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && service tor status & python p.py
+
+
 cat >y.py <<EOF
 from camoufox.sync_api import Camoufox
 with Camoufox(
@@ -29,33 +33,3 @@ python y.py
 
 
 
-
-####### 
-
-FROM python:3.12
-
-RUN apt-get update &&  apt-get install -y xrdp xfce4-terminal libgtk-3-0 libasound2  libx11-xcb1
-
-RUN pip3 install camoufox[geoip] &&  camoufox fetch
-RUN 
-
-echo "from camoufox.sync_api import Camoufox ">> p.py ; echo "with Camoufox( ">> p.py ; echo "    window=(720,1080), ">> p.py ; echo "    geoip=True, ">> p.py ; echo "    proxy={  ">> p.py ; echo "        'server': 'socks5://127.0.0.1:9050',  ">> p.py ; echo "    }   ">> p.py ; echo ") as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py
-
-
-EOF
-COPY script.py .
-
-CMD ["python3", "script.py"]
-
-
-
-cat <<EOF >Dockerfile 
-FROM ubuntu 
-RUN printf "root\nroot" | passwd root && apt update && DEBIAN_FRONTEND=noninteractive  apt install -y xrdp xfce4-terminal openbox wget 7zip curl && echo 'exec openbox &  exec xfce4-terminal --execute bash -c "wget -O zen.linux-x86_64.tar.xz https://github.com/zen-browser/desktop/releases/latest/download/zen.linux-x86_64.tar.xz && 7z x *tar* && 7z x *tar && rm -rf *tar* && ~/zen/zen -private-browser ; exec bash"'> /etc/xrdp/startwm.sh
-
-EXPOSE 3389
-EOF
-docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole &
-docker build -t zen .
-docker rm -f $(docker ps --filter "publish=4500" -q)
-docker run --rm -dit -p 4500:3389  -v /onedrive/:/onedrive/ zen
