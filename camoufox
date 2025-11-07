@@ -15,9 +15,12 @@ cd /tmp && sudo apt update && sudo apt install tor python3 pip && python3 -m ven
 
 cat >y.py <<EOF
 from camoufox.sync_api import Camoufox
+from browserforge.fingerprints import Screen
 with Camoufox(
-    window=(720,1080),
+    os=('windows', 'macos', 'linux'),
+    screen=Screen(max_width=720, max_height=1080),
     geoip=True,
+    locale="US"    
     proxy={
         'server': 'socks5://127.0.0.1:9050',
     }
@@ -32,5 +35,35 @@ EOF
 
 
 
+
+
+
+
+
+
+
+
+#set screen size
+from browserforge.fingerprints import Screen
+
+constrains = Screen(max_width=720, max_height=1080)
+with Camoufox(screen=constrains) as browser:
+...
+
+
+#set locale 
+with Camoufox(locale="en-US") as browser:
+
+
+from camoufox.sync_api import Camoufox
+from browserforge.fingerprints import Screen
+
+with Camoufox(
+    os=('windows', 'macos', 'linux'),
+    screen=Screen(max_width=1920, max_height=1080),
+    window=(720,1080),
+) as browser:
+    page = browser.new_page()
+    page.goto("https://example.com/")
 
 export XDG_RUNTIME_DIR="/run/user/0"
