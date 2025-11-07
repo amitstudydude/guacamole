@@ -20,7 +20,6 @@ with Camoufox(
     os=('windows', 'macos', 'linux'),
     screen=Screen(max_width=720, max_height=1080),
     geoip=True,
-    locale="US"    
     proxy={
         'server': 'socks5://127.0.0.1:9050',
     }
