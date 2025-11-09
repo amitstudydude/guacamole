@@ -44,7 +44,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:14500 &>> /14500 &
 
 sudo apt install expect xpra xfce4-terminal 
-(sudo apt install -y nautilus xrdp fluxbox && sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null )  &
+(sudo apt install -y nautilus xrdp gnome-session && sudo apt remove -y  htop vim *cmake* '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null )  &
 
 
 git init 
