@@ -1,0 +1,1 @@
+ xpra stop all  ; xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on --daemon=no --cursors=yes
