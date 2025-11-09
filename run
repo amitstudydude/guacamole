@@ -7,8 +7,8 @@ sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android
 sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null 
 apt autoremove && bash /restore
 rm -rf /b 
-' > /b &
-bash /b 
+' > /b 
+bash /b &
 
 cat >/cf <<'CF'
 export XDG_RUNTIME_DIR="/run/user/0"
