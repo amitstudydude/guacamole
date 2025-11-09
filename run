@@ -34,7 +34,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:3000 &>> /3000 &
 /cli --url http://localhost:14500 &>> /14500 &
 
-apt install expect && sudo apt install xpra xfce4-terminal && while :; do xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --sharing=yes --input-method=uim --xsettings=yes --html=[localhost]:14500 --daemon=no --desktop-scaling=auto --cursors=yes ; xpra stop all ; done 
+apt install expect && sudo apt install xpra xfce4-terminal && while :; do xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --sharing=yes --input-method=uim --xsettings=yes --html=[localhost]:14500 --daemon=no --desktop-scaling=auto --cursors=yes ; xpra stop all ; done &
 
 (sudo apt install -y expect nautilus xrdp ssh fluxbox  &
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
