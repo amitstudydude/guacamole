@@ -35,7 +35,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:3000 &>> /3000 &
 /cli --url http://localhost:14500 &>> /14500 &
 
-apt install expect && sudo apt install xpra xfce4-terminal && xpra stop all  ; xpra start :100 --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on &
+apt install expect && sudo apt install xpra xfce4-terminal && xpra stop all  ; xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --bind-tcp=0.0.0.0:14500 --exit-with-children=yes  --html=on --daemon=no &
 (sudo apt install -y expect nautilus xrdp ssh fluxbox ) &
 #(sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null &
 #(apt autoremove && bash /restore ) 
