@@ -7,3 +7,11 @@ while :; do curl --silent --fail localhost:14500 || xpra stop all && xpra start 
 .
 
 while :; do if curl --silent --fail localhost:14500 > /dev/null 2>&1; then sleep 10; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; else xpra start --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR=\"/run/user/0\" && bash /cf'" --html=on --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes --bind-tcp=localhost:14500 --daemon=no & sleep 10; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; fi; done
+
+
+### for docker
+docker run --name=u -it -p 14500:14500 ubuntu
+
+cd /tmp && apt update && DEBIAN_FRONTEND=noninteractive apt install -y  xpra xfce4-terminal sudo tor python3 pip python3-venv && xpra start --start-child=xfce4-terminal --html=on --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes --bind-tcp=localhost:14500 --daemon=no
+python3 -m venv venv && source venv/bin/activate && python3 -m pip install camoufox[geoip] && python3 -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox" > p.py ; echo "from browserforge.fingerprints import Screen " >> p.py ; echo "with Camoufox(" >> p.py ; echo "    os=('windows', 'macos', 'linux')," >> p.py ; echo "    screen=Screen(max_width=720, max_height=1080)," >> p.py ; echo "    block_webrtc=True,">> p.py; echo "    window=(720,1080),">> p.py; echo "    geoip=True," >> p.py ; echo "    proxy={" >> p.py ; echo "        'server': 'socks5://127.0.0.1:9050'," >> p.py ; echo "    }" >> p.py ; echo ") as browser:" >> p.py ; echo "    page = browser.new_page()" >> p.py ; echo "    page.goto('https://www.browserscan.net')" >> p.py ; echo "    input('Press Enter here after closing the browser to finish...')" >> p.py && tor & python3 p.py
+
