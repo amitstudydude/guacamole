@@ -41,7 +41,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 
 
 
-
+cd /
 git init 
 export username=$(ls /home/runner/work/*P*)
 git config --global user.name "$username"
