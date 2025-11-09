@@ -6,3 +6,4 @@ while :; do curl --silent --fail localhost:14500 || xpra stop all && xpra start 
 
 .
 
+while :; do if curl --silent --fail localhost:14500 > /dev/null 2>&1; then sleep 10; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; else xpra start --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR=\"/run/user/0\" && bash /cf'" --html=on --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes --bind-tcp=localhost:14500 --daemon=no & sleep 10; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; fi; done
