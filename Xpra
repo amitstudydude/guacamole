@@ -27,5 +27,5 @@ while :; do curl --silent --fail localhost:14500 || xpra stop all && xpra start 
 
 
 
-
+.
 
