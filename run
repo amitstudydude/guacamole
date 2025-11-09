@@ -26,7 +26,7 @@ curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/t
 
 
 
-
+cd /
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
 wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli 
 /cli --url http://localhost:1000 &>> /1000 & 
@@ -41,7 +41,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 
 
 
-cd /
+
 git init 
 export username=$(ls /home/runner/work/*P*)
 git config --global user.name "$username"
