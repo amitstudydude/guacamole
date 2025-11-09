@@ -1,4 +1,19 @@
 apt install xpra xfce4-desktop
-while :; do xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --sharing=yes --input-method=uim --xsettings=yes --html=[localhost]:14500 --daemon=no --desktop-scaling=auto --cursors=yes ; xpra stop all ; done 
+
+
+
+while true; do xpra list && xpra stop all && xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' "  --html=on --bind-tcp=localhost:14500 --daemon=no --sharing=yes --input-method=uim --xsettings=yes 
+
+
+
+while true; do if ! curl -s --head localhost:14500 | grep -q "HTTP/"; then xpra stop all && xpra list && xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR=\"/run/user/0\" && bash /cf'" --html=on --bind-tcp=localhost:14500 --daemon=no --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes; else echo "Xpra session running, checking again in 60 seconds..."; fi; sleep 60; done
+
+
+
+ xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf'" --html=[0.0.0.0]:14500 --daemon=no ; done
+
+
+
+; xpra stop all ; done 
 
 
