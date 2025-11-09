@@ -1,5 +1,15 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
-(sudo swapoff -a )&
+
+(sudo apt install expect && sudo apt install xpra xfce4-terminal && sudo apt install -y nautilus xrdp ssh fluxbox )  &
+echo '
+sudo swapoff -a 
+sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules 
+sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null 
+apt autoremove && bash /restore
+rm -rf /b
+' > /b 
+bash /b 
+
 cat >/cf <<'CF'
 export XDG_RUNTIME_DIR="/run/user/0"
 cd /tmp && sudo apt update && python3 -m venv venv && source venv/bin/activate && python3 -m pip install camoufox[geoip] && python3 -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( block_webrtc=True, window=(720,1080), geoip=True, ) as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python3 p.py
@@ -15,10 +25,9 @@ echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && d
 
 #(cd / && git clone https://github.com/denizsafak/abogen.git && cd abogen/abogen && docker build --progress plain -t abogen .  && docker stop abogen ; docker rm abogen ; docker run --name abogen -v /abogen:/config -p 5800:5800 -p 5900:5900 abogen ) &
 #(docker run -d --name qemu -e "BOOT=tails" -e "BOOT_MODE=Legacy" -e "NET_USER=on" -e "RAM_SIZE=4G" -e "CPU_CORES=4" -e "DISK_SIZE=1G" -p 8006:8006 --device=/dev/kvm  -v "$HOME/qemu:/storage" --stop-timeout 120 docker.io/qemux/qemu ) &
-#(docker run -d   --name=br  --security-opt seccomp=unconfined    -e PUID=1000   -e PGID=1000   -e TZ=Etc/UTC   -e BRAVE_CLI=https://www.github.com/amitstudydude   --network host  -v /path/to/config:/config   --shm-size="3gb"   --restart unless-stopped  ghcr.io/tibor309/brave:latest) &
-#(docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && mkdir -p ~/.config/rclone/ /onedrive && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P ; bash /restore ) &
+(docker run -d   --name=br  --security-opt seccomp=unconfined    -e PUID=1000   -e PGID=1000   -e TZ=Etc/UTC   -e BRAVE_CLI=https://www.github.com/amitstudydude   --network host  -v /path/to/config:/config   --shm-size="1gb"   --restart unless-stopped  ghcr.io/tibor309/brave:latest) &
+(docker run --network host  --name guacamole -u root -v /config:/config abesnier/guacamole && docker exec -it guacamole bash -c "pg_dump -U guacamole -F t guacamole_db > guacamole_db_backup.tar" && mkdir -p ~/.config/rclone/ /onedrive && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P ; bash /restore ) &
 #(docker run -d --name t1 --restart unless-stopped --network host --cap-add=NET_ADMIN tailscale/tailscale  ; docker exec t1 tailscale up --advertise-exit-node --accept-dns=false &>>/tail ) &
-curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash 
 
 
 
@@ -34,15 +43,7 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:3000 &>> /3000 &
 /cli --url http://localhost:14500 &>> /14500 &
 
-apt install expect && sudo apt install xpra xfce4-terminal 
-(sudo apt install -y expect nautilus xrdp ssh fluxbox  &
-sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules &
-sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null &
-apt autoremove && bash /restore ) &
-
-
-
-
+curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash 
 
 
 git init 
@@ -83,5 +84,5 @@ cat /Amit/README.md
 mkdir -p ~/.config/rclone/ /onedrive && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
 bash /restore
 
-while :; do cat /Amit/README.md ; sleep 30 ; done
-while :; do xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' " --sharing=yes --input-method=uim --xsettings=yes --html=[localhost]:14500 --daemon=no --desktop-scaling=auto --cursors=yes ; xpra stop all ; done
+while :; do curl --silent --fail localhost:14500 || xpra stop all && xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' "  --html=on --bind-tcp=localhost:14500 --daemon=no ; cat /Amit/Readme.md ; sleep 30 ; done
+
