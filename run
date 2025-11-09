@@ -80,7 +80,4 @@ EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 cat /Amit/README.md
 
-mkdir -p ~/.config/rclone/ /onedrive && wget https://raw.githubusercontent.com/amitstudydude/RDP_Linux/main/scripts/rclone.conf && mv rclone.conf ~/.config/rclone && wget https://rclone.org/install.sh && sudo bash ./install.sh && rm install.sh && rclone listremotes && rclone mount onedrive:PC /onedrive --allow-non-empty --vfs-cache-mode full --user-agent 'Mozilla' --vfs-cache-mode full --cache-dir 'cache' --allow-other  --transfers 100 --daemon --vfs-cache-poll-interval 1s --vfs-cache-max-age 1s --vfs-write-back 1s -P 
-bash /restore
-
 while :; do curl --silent --fail localhost:14500 || xpra stop all ; xpra start --start-child=xfce4-terminal --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR="/run/user/0" && bash /cf' "  --html=on --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes --bind-tcp=localhost:14500 --daemon=no & cat /Amit/Readme.md ; sleep 3 ; done
