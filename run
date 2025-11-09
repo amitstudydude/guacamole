@@ -1,10 +1,9 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 
-(sudo apt install expect && sudo apt install xpra xfce4-terminal && sudo apt install -y nautilus xrdp ssh fluxbox )  &
+(sudo apt install expect && sudo apt install xpra xfce4-terminal && sudo apt install -y nautilus xrdp ssh fluxbox && sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null )  &
 echo '
 sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules 
-sudo apt remove -y gnome* htop vim firefox '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null 
 apt autoremove && bash /restore
 rm -rf /b 
 ' > /b 
