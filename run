@@ -11,7 +11,7 @@ bash /b &
 
 cat >/cf <<'CF'
 export XDG_RUNTIME_DIR="/run/user/0"
-cd /tmp && sudo apt update && python3 -m venv venv && source venv/bin/activate && python3 -m pip install camoufox[geoip] && python3 -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( block_webrtc=True, window=(720,1080), geoip=True, ) as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python3 p.py
+cd /tmp && sudo apt update && python3 -m venv venv && source venv/bin/activate && python3 -m pip install camoufox[geoip] && python3 -m  camoufox fetch && echo "from camoufox.sync_api import Camoufox "> p.py ; echo "with Camoufox( block_webrtc=True, window=(720,1080), geoip=True, ) as browser:  ">> p.py ; echo "    page = browser.new_page()   ">> p.py ; echo '    page.goto("https://www.browserscan.net")   '>> p.py ; echo '    input("Press Enter here after closing the browser to finish...")  '>> p.py && python3 p.py & bash 
 CF
 service ssh restart && sed -i '3 i HostKeyAlgorithms +ssh-rsa' /etc/ssh/sshd_config && sed -i '3 i PasswordAuthentication yes' /etc/ssh/sshd_config && sed -i '3 i PermitUserEnvironment yes' /etc/ssh/sshd_config && sed -i '3 i PermitRootLogin yes' /etc/ssh/sshd_config && service ssh restart
 
