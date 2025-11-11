@@ -1,6 +1,7 @@
 printf "root\nroot" | passwd root &&  printf "root\nroot" | passwd runner && printf "root\nroot" | passwd runneradmin  
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/ts | bash &
-sudo apt install expect xpra xfce4-terminal &
+#sudo apt install expect xpra xfce4-terminal &
+sudo apt install expect xrdp xfce4-terminal &
 echo '
 sudo swapoff -a 
 sudo rm -rf /mnt/swap* /usr/share/dotnet /usr/share/swift /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/local/share/boost "$AGENT_TOOLSDIRECTORY" /opt/hostedtoolcache/ /usr/local/graalvm/ /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules 
@@ -43,9 +44,10 @@ wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download
 /cli --url http://localhost:3000 &>> /3000 &
 /cli --url http://localhost:14500 &>> /14500 &
 
-sudo apt install expect xpra xfce4-terminal 
-(sudo apt install -y nautilus xrdp gnome-session && sudo apt remove -y  htop vim *cmake* '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure-cli google-* microsoft-* powershell mono-devel &>> /dev/null )  &
-
+#sudo apt install expect xpra xfce4-terminal 
+sudo apt purge gnome*
+(sudo apt purge -y  htop vim '^dotnet-.*' '^llvm-.*' '^php.*' '^mongodb-.*' '^mysql-.*' azure* google-* microsoft-* powershell* mono-devel &>> /dev/null )  &
+(apt autoremove &>> /dev/null )  &
 
 git init 
 export username=$(ls /home/runner/work/*P*)
@@ -60,9 +62,9 @@ cd /Amit
 grep -oP 'https:\/\/sshx\.io\/\S+' /sx | sed 's/\x1b\[[0-9;]*m//g' | sed 's/[^[:print:]\t]//g' > /Amit/README.md
 cat /1000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[http]&:' &>> /Amit/README.md
 cat /8080 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Linux]&:' &>> /Amit/README.md
+cat /3000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[remmina]&:' &>> /Amit/README.md
 cat /5800 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[Abogen]&:' &>> /Amit/README.md
 cat /8006 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[qemu]&:' &>> /Amit/README.md
-cat /3000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[remmina]&:' &>> /Amit/README.md
 cat /14500 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[xpra]&:' &>> /Amit/README.md
 cat /tail &>> /Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md"
@@ -82,8 +84,8 @@ EOF
 curl https://raw.githubusercontent.com/amitstudydude/guacamole/refs/heads/main/Updatelist | bash
 cat /Amit/README.md
 
-while :; do if curl --silent --fail localhost:14500 > /dev/null 2>&1; then sleep 60; xpra list ;  cat /Amit/README.md || echo "Failed to read /Amit/README.md."; else xpra start --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR=\"/run/user/0\" && bash /cf'" --html=on --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes --bind-tcp=localhost:14500 --daemon=no & sleep 10; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; fi; done
-
+#while :; do if curl --silent --fail localhost:1000 > /dev/null 2>&1; then sleep 60;  cat /Amit/README.md || echo "Failed to read /Amit/README.md."; else xpra start --start-child="xfce4-terminal --execute bash -c 'export XDG_RUNTIME_DIR=\"/run/user/0\" && bash /cf'" --html=on --sharing=yes --input-method=uim --xsettings=yes --desktop-scaling=auto --cursors=yes --bind-tcp=localhost:14500 --daemon=no & sleep 10; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; fi; done
+while :; do if curl --silent --fail https://www.google.com > /dev/null 2>&1; then sleep 60; cat /Amit/README.md || echo "Failed to read /Amit/README.md."; else reboot ; fi; done
 
 
 #
