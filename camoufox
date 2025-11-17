@@ -27,8 +27,7 @@ make an html and js file and whatever you require to make it accessible in publi
 it should show browser gui, supports extensions all firefox settings
 it should support all basic mobile touch events like one tap mouse click, double tab right click, finger swipe to scroll, it should elicit keyboard android if any input feild is being tapped on
 make the code github pages compatible so that i can upload and run on it too
-
-
+you should have all browser features like tabs, window support, firefox menu, book marks menu, settings , extension tab same as default firefox session, nothing should be lacking
 
 
 
