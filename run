@@ -35,6 +35,7 @@ echo 'cp /onedrive/guacamole_db_backup.tar1 /config/guacamole_db_backup.tar && d
 
 
 cd /
+(curl -X POST -H 'Authorization: Bearer sk_test_3wk12xZ4w3GVs1dAGwK9nfaSjnfkvq7lwOUwQXkIZZc'     https://engine.hyperbeam.com/v0/vm     -d '{"ublock":true,"start_url": "https://ublockorigin.com","offline_timeout": null}') &>>/hyper.txt
 python3 -m http.server 1000 & curl -sSf https://sshx.io/get | sh -s run &>> /sx & 
 wget -qO /cli https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && chmod +x /cli 
 /cli --url http://localhost:1000 &>> /1000 & 
@@ -67,6 +68,7 @@ cat /3000 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:try
 #cat /8006 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[qemu]&:' &>> /Amit/README.md
 #cat /14500 | sed '5!d' | sed 's:[2022]*:[&:' |  sed 's:https*:](&:' |  sed 's:trycloudflare.com*:&):' | sed -e 's/\[[^][]*\]//g' | sed 's:(:[xpra]&:' &>> /Amit/README.md
 #cat /tail &>> /Amit/README.md
+cat /hyper.txt &>> /Amit/README.md
 cp /Amit/README.md "/Amit/Links/$(TZ='Asia/Kolkata' date +'%d-%B')at$(TZ='Asia/Kolkata' date +'%H:%M')until$(TZ='Asia/Kolkata' date -d '+6 hours' +'%I:%M%p').md"
 git pull origin
 git add --all
