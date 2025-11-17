@@ -1,3 +1,58 @@
+
+
+
+#setup python , pip and camoufox 
+python3 -m pip install camoufox[geoip] && python3 -m  camoufox fetch 
+
+
+ create python script
+cat >y.py <<EOF
+from camoufox.sync_api import Camoufox
+from browserforge.fingerprints import Screen
+with Camoufox(
+    os=('windows', 'macos', 'linux')
+    block_webrtc=True,
+    geoip=True
+) as browser:
+    page = browser.new_page()
+    page.goto("https://www.browserscan.net")
+    input("Press Enter here after closing the browser to finish...")
+EOF
+
+run python script
+python y.py
+
+
+make an html and js file and whatever you require to make it accessible in public 
+it should show browser gui, supports extensions all firefox settings
+it should support all basic mobile touch events like one tap mouse click, double tab right click, finger swipe to scroll, it should elicit keyboard android if any input feild is being tapped on
+make the code github pages compatible so that i can upload and run on it too
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxxcc
+
+
+
+
+
+
+
+
+
+
+
 #wget -O Donut.Browser_latest_amd64.deb $(wget -qO- https://api.github.com/repos/zhom/donutbrowser/releases/latest | grep "browser_download_url" | grep 'amd64\.deb"' | sed -E 's/.*"([^"]+)".*/\1/') && sudo apt install Donut.Browser_latest_amd64.deb && rm -rf Donut.Browser_latest_amd64.deb 
 
 
