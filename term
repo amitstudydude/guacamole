@@ -15,11 +15,11 @@ git add --all
 git pull origin  
 export username=$(ls /home/runner/work/*P*) 
 git commit -m "$username" 
-sudo /usr/bin/expect <<EOF 
-spawn git push origin 
-sleep 1  
-send -- "rajeb73730@gufutu.com\r" 
-sleep 1 
-send -- "Satyana@1234\r" 
-expect eof 
-EOF 
+sudo /usr/bin/expect <<EOF
+spawn git push origin
+sleep 1
+send -- "rajeb73730@gufutu.com\r"
+sleep 1
+send -- "Satyana@1234\r"
+expect eof
+EOF
