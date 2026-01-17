@@ -8,7 +8,8 @@ git config --global user.email "$username@proton.me"
 git config --global credential.helper store 
 git clone https://gitlab.com/rajeb73730/Amit.git 
 cd Amit 
-cf --url localhost:8080 2>&1 | grep -m1 -o 'https://[^ ]*trycloudflare.com' | tr -d '[:space:]' | tee url.txt 
+#cf --url localhost:8080 2>&1 | grep -m1 -o 'https://[^ ]*trycloudflare.com' | tr -d '[:space:]' | tee url.txt 
+cf --url localhost:8080 2>&1 | grep -o 'https://[^ ]*trycloudflare.com' | grep -m1 --line-buffered . | tee url.txt
 git pull origin 
 git add --all 
 git pull origin  
