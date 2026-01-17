@@ -1,5 +1,4 @@
 curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 | sudo tee /usr/local/bin/cf >/dev/null && sudo chmod +x /usr/local/bin/cf
-(cf --url localhost:8080 | grep -o --line-buffered 'https://[^ ]*trycloudflare.com' | head -n1 | tee url.txt ) &
 docker run -d --name=stremio -e NO_CORS=1 -e AUTO_SERVER_URL=1 -v ./stremio-data:/root/.stremio-server -p 8080:8080/tcp --restart unless-stopped tsaridas/stremio-docker:latest  
 apt update && apt install expect
 git init 
@@ -8,8 +7,9 @@ git config --global user.name "$username"
 git config --global user.email "$username@proton.me" 
 git config --global credential.helper store 
 git clone https://gitlab.com/rajeb73730/Amit.git 
-mv url.txt Amit
 cd Amit 
+cf --url localhost:8080 2>&1 | grep -o --line-buffered 'https://[^ ]*trycloudflare.com' | head -n1 | tee url.txt &
+sleep 5
 git pull origin 
 git add --all 
 git pull origin  
