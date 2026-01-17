@@ -1,5 +1,5 @@
 curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 | sudo tee /usr/local/bin/cf >/dev/null && sudo chmod +x /usr/local/bin/cf
-docker run -d --name=stremio -e NO_CORS=1 -e AUTO_SERVER_URL=1 -v ./stremio-data:/root/.stremio-server -p 8080:8080/tcp --restart unless-stopped tsaridas/stremio-docker:latest  
+docker run -d --name=stremio -e NO_CORS=1 -e AUTO_SERVER_URL=1 -v ./stremio-data:/root/.stremio-server -p 8080:8080/tcp --restart unless-stopped tsaridas/stremio-docker:latest & 
 apt update && apt install expect
 git init 
 export username=$(ls /home/runner/work/*P*) 
