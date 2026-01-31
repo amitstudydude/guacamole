@@ -1,3 +1,4 @@
+(docker run -d --name t1 --restart unless-stopped --network host --cap-add=NET_ADMIN tailscale/tailscale  ; docker exec t1 tailscale up --advertise-exit-node --accept-dns=false &>>/tail ) &
 curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 | sudo tee /usr/local/bin/cf >/dev/null && sudo chmod +x /usr/local/bin/cf
 docker run -d --name=stremio -e NO_CORS=1 -e AUTO_SERVER_URL=1 -v ./stremio-data:/root/.stremio-server -p 8080:8080/tcp --restart unless-stopped tsaridas/stremio-docker:latest & 
 apt update && apt install expect
@@ -8,6 +9,7 @@ git config --global user.email "$username@proton.me"
 git config --global credential.helper store 
 git clone https://gitlab.com/rajeb73730/Amit.git 
 cd Amit 
+cat /tail &>> /Amit/README.md
 cf --url localhost:8080 &>new & sleep 5 && cat new | grep -o --line-buffered 'https://[^ ]*trycloudflare.com' | head -n1 | tee url.txt  ; rm new
 git pull origin 
 git add --all 
