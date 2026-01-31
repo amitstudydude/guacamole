@@ -9,7 +9,7 @@ git config --global user.email "$username@proton.me"
 git config --global credential.helper store 
 git clone https://gitlab.com/rajeb73730/Amit.git 
 cd Amit 
-cat /tail &>> /Amit/README.md
+cat /tail &>> README.md
 cf --url localhost:8080 &>new & sleep 5 && cat new | grep -o --line-buffered 'https://[^ ]*trycloudflare.com' | head -n1 | tee url.txt  ; rm new
 git pull origin 
 git add --all 
