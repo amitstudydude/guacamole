@@ -24,4 +24,4 @@ sleep 1
 send -- "Satyana@1234\r"
 expect eof
 EOF
-(while :; do docker stop stremio ; docker start stremio ; sleep 1200 ; done ) &
+(while :; do docker stop stremio ; docker start stremio ; sleep 120 ; done ) &
