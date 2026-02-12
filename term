@@ -7,7 +7,7 @@ export username=$(ls /home/runner/work/*P*)
 git config --global user.name "$username" 
 git config --global user.email "$username@proton.me" 
 git config --global credential.helper store 
-git clone https://gitlab.com/rajeb73730/Amit.git 
+printf "rajeb73730@gufutu.com\nSatyana@1234" | git clone https://gitlab.com/rajeb73730/Amit.git 
 cd Amit
 cat ~/tail &> README.md
 cf --url localhost:8080 &>new & sleep 5 && cat new | grep -o --line-buffered 'https://[^ ]*trycloudflare.com' | head -n1 | tee url.txt  ; rm new
